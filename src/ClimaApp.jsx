@@ -13,14 +13,18 @@ export const ClimaApp = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();  //para que no se actualiza
-        if (ciudad.length > 0 ? fetchClima(): console.log('No city'));
+        if (ciudad.length > 3 ? fetchClima(): console.log('No city'));
 
     }
 
     const [wheaterData, setWheaterData] = useState(null)
+    const urlBase = "http://api.weatherapi.com/v1/current.json";
+    const keys = "306805565013442592d224449251104";
 
-    const fetchClima = () => {
+    const fetchClima = async() => {
         console.log("Si hay ciudad");
+        const datosRecibidos = await fetch(`${urlBase}?q=Paris&key=${keys}`);
+        // setWheaterData(await GET );
     };
 
     // http://api.weatherapi.com/v1/current.json?q=Paris&key=306805565013442592d224449251104

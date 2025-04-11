@@ -23,6 +23,7 @@ export const ClimaApp = () => {
         console.log("Si hay ciudad");
     };
 
+    // http://api.weatherapi.com/v1/current.json?q=Paris&key=306805565013442592d224449251104
 
     return(
         <div className="box">

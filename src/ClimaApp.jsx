@@ -1,16 +1,39 @@
+import { useState } from "react";
 
 
 export const ClimaApp = () => {
 
+    const [ciudad, setCiudad] = useState("gorda");
+
+    const handleCambioCD = (e) =>{
+
+        setCiudad(e.target.value);
+        console.log(`La ciudad es ${ciudad}`);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();  //para que no se actualiza
+        if (ciudad.length > 0 ? fetchClima(): console.log('No city'));
+
+    }
+
+    const [wheaterData, setWheaterData] = useState(null)
+
+    const fetchClima = () => {
+        console.log("Si hay ciudad");
+    };
+
+
     return(
         <div className="box">
             <h2 className="title is-2 has-text-centered"> Gordo </h2>
+            <h3>{ciudad}</h3>
 
-            <form>
-                <div class="field">
+            <form onSubmit={handleSubmit}>
+                {/* <div class="field"> */}
                     {/* <p class="control has-icons-left has-icons-right"> */}
                         
-                        <input class="input" type="text" placeholder="Busque su ciudad"/>
+                        <input className="input" type="text" placeholder="Busque su ciudad" onChange={handleCambioCD}/>
                         
                         {/* <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
@@ -19,7 +42,7 @@ export const ClimaApp = () => {
                             <i class="fas fa-check"></i>
                         </span> */}
                     {/* </p> */}
-                    <button className="button is-link">Buscar</button>
+                    <button className="button is-link" type="submit">Buscar</button>
 
                     
 {/* <div class="field is-grouped">
@@ -27,7 +50,7 @@ export const ClimaApp = () => {
     <button class="button is-link">Submit</button>
   </div>
 </div> */}
-                </div>
+                {/* </div> */}
             </form>
         </div>
     );

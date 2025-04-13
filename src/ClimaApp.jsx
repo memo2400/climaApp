@@ -25,17 +25,24 @@ export const ClimaApp = () => {
     const fetchClima = async() => {
         try{
         console.log("Si hay ciudad");
-        const datosRecibidos = await fetch(`${urlBase}?q=Paris&key=${keys}&lang={idioma}`);
+
+        const urlFinal = `${urlBase}?key=${keys}&q=${ciudad}&lang=${idioma}`;
+        console.log(`Se consulta: ${urlFinal}`);
+        const datosRecibidos = await fetch(urlFinal);
         const datosTraducidos = await datosRecibidos.json();
         setWheaterData(datosTraducidos);
-        alert(`Good`)
-        // setWheaterData(await GET );
+
+        alert(`Se logro la consulta`);
+        console.log(wheaterData.current.condition.icon);
+        
+        // setWheaterData(await GET () );
         }
         catch (error){
-            alert(`Ocurrio el error :"${error}"`)
+            alert(`Ocurrio el error al hacer la consulta :"${error}"`)
         }
     };
-
+                
+    // const iconoAUsar = `https:${wheaterData?.current?.condition?.icon}`
     // http://api.weatherapi.com/v1/current.json?q=Paris&key=306805565013442592d224449251104
 
     return(
@@ -70,7 +77,7 @@ export const ClimaApp = () => {
 
                         <div className="columns">
                             <div className="column">
-                                <p className="mt-5">Humedad: {wheaterData?.current?.humidity} %</p>
+                                <p className="mt-6">Humedad: {wheaterData?.current?.humidity} %</p>
                                 <p>Viento: a {wheaterData?.current?.wind_kph} km/h</p>
                                 <p>Rayos UV: {wheaterData?.current?.uv}</p>
                             </div>
@@ -81,7 +88,10 @@ export const ClimaApp = () => {
                 
                                 {/* <span className="icon is-small is-center"> */}
                                     {/* <i src={`https:{wheaterData?.current?.condition?.icon}`}></i> */}
-                                <i src={`https:{wheaterData?.current?.condition?.icon}`}/>
+
+                                {/* <img src={iconoAUsar}/> */}
+                                <img src={`https:${wheaterData?.current?.condition?.icon}`} className="is-pulled-right"></img>
+                                {/* <img src="https://cdn.weatherapi.com/weather/64x64/day/122.png"/> */} 
                                 {/* </span> */}
                             </div>
 

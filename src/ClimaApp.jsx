@@ -20,43 +20,84 @@ export const ClimaApp = () => {
     const [wheaterData, setWheaterData] = useState(null)
     const urlBase = "http://api.weatherapi.com/v1/current.json";
     const keys = "306805565013442592d224449251104";
+    const idioma = "es"
 
     const fetchClima = async() => {
+        try{
         console.log("Si hay ciudad");
-        const datosRecibidos = await fetch(`${urlBase}?q=Paris&key=${keys}`);
+        const datosRecibidos = await fetch(`${urlBase}?q=Paris&key=${keys}&lang={idioma}`);
+        const datosTraducidos = await datosRecibidos.json();
+        setWheaterData(datosTraducidos);
+        alert(`Good`)
         // setWheaterData(await GET );
+        }
+        catch (error){
+            alert(`Ocurrio el error :"${error}"`)
+        }
     };
 
     // http://api.weatherapi.com/v1/current.json?q=Paris&key=306805565013442592d224449251104
 
     return(
         <div className="box">
-            <h2 className="title is-2 has-text-centered"> Gordo </h2>
+            <h2 className="title is-2 has-text-centered"> Clima Actual </h2>
             <h3>{ciudad}</h3>
 
-            <form onSubmit={handleSubmit}>
-                {/* <div class="field"> */}
-                    {/* <p class="control has-icons-left has-icons-right"> */}
+            <div className="columns is-centered">
+            <div className="column is-half">
+            <form className="box" onSubmit={handleSubmit}>
+                    <p className="control has-icons-left has-icons-right">
                         
-                        <input className="input" type="text" placeholder="Busque su ciudad" onChange={handleCambioCD}/>
+                        <input className="input my-4" type="text" placeholder="Busque su ciudad" onChange={handleCambioCD}/>
                         
-                        {/* <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
+                        {/* <span className="icon is-small is-left">
+                            <i className="fas fa-envelope"></i>
                         </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
+                        <span className="icon is-small is-right">
+                            <i className="fas fa-check"></i>
                         </span> */}
-                    {/* </p> */}
-                    <button className="button is-link" type="submit">Buscar</button>
+                    </p>
+                    <button className="button is-success is-fullwidth" type="submit">Buscar</button>
+            </form>
+            </div>
+            </div>
 
+            {/* si wheteer data es true, se cambia */}
+            { wheaterData && (
+                <div className="columns is-centered my-5">
+                    <div className="box column is-one-third">
+                        <h4 className="title is-4 has-text-centered has-text-info">Ciudad: {wheaterData?.location?.name}</h4>
+
+                        <div className="columns">
+                            <div className="column">
+                                <p className="mt-5">Humedad: {wheaterData?.current?.humidity} %</p>
+                                <p>Viento: a {wheaterData?.current?.wind_kph} km/h</p>
+                                <p>Rayos UV: {wheaterData?.current?.uv}</p>
+                            </div>
+
+                            <div className="column">
+                                <p className="has-text-right-desktop is-size-3">{wheaterData?.current?.temp_c} °C</p>
+                                <p className="has-text-right-desktop">{wheaterData?.current?.condition?.text}</p>
+                
+                                {/* <span className="icon is-small is-center"> */}
+                                    {/* <i src={`https:{wheaterData?.current?.condition?.icon}`}></i> */}
+                                <i src={`https:{wheaterData?.current?.condition?.icon}`}/>
+                                {/* </span> */}
+                            </div>
+
+                       
+                        </div>
+                    </div>
+                </div>
+            )}
                     
-{/* <div class="field is-grouped">
-  <div class="control">
-    <button class="button is-link">Submit</button>
+{/* <div className="field is-grouped">
+  <div className="control">
+    <button className="button is-link">Submit</button>
   </div>
 </div> */}
                 {/* </div> */}
-            </form>
+
         </div>
     );
 }

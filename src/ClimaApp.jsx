@@ -33,7 +33,7 @@ export const ClimaApp = () => {
         setWheaterData(datosTraducidos);
 
         alert(`Se logro la consulta`);
-        console.log(wheaterData.current.condition.icon);
+        // console.log(wheaterData.current.condition.icon);  //esto parece hacer el error, ya que se carga antes que el await
         
         // setWheaterData(await GET () );
         }
@@ -73,7 +73,7 @@ export const ClimaApp = () => {
             { wheaterData && (
                 <div className="columns is-centered my-5">
                     <div className="box column is-one-third">
-                        <h4 className="title is-4 has-text-centered has-text-info">Ciudad: {wheaterData?.location?.name}</h4>
+                        <h4 className="title is-4 has-text-centered has-text-info">Ciudad: {wheaterData?.location?.name}, {wheaterData?.location?.country}</h4>
 
                         <div className="columns">
                             <div className="column">
@@ -107,6 +107,11 @@ export const ClimaApp = () => {
   </div>
 </div> */}
                 {/* </div> */}
+            <footer class="footer">
+            <p>
+            <strong>Designed</strong> by <a href="https://jgthms.com">Hermetic Inc</a>
+            </p>
+            </footer>
 
         </div>
     );

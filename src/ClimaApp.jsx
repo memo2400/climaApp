@@ -18,10 +18,11 @@ export const ClimaApp = () => {
     }
 
     const [wheaterData, setWheaterData] = useState(null)
+    const [iconoGrande,seticonoGrande] = useState(null)
     const urlBase = "http://api.weatherapi.com/v1/current.json";
     const keys = "306805565013442592d224449251104";
     const idioma = "es";
-    // const iconoGrande = "";
+    
 
     const fetchClima = async() => {
         try{
@@ -32,6 +33,7 @@ export const ClimaApp = () => {
         const datosRecibidos = await fetch(urlFinal);
         const datosTraducidos = await datosRecibidos.json();
         setWheaterData(datosTraducidos);
+        seticonoGrande(datosTraducidos?.current?.condition?.icon.replace("64x64","128x128"));
 
         alert(`Se logro la consulta`);
         // console.log(wheaterData.current.condition.icon);  //esto parece hacer el error, ya que se carga antes que el await
@@ -111,7 +113,7 @@ export const ClimaApp = () => {
                                 {/* <img src="https://cdn.weatherapi.com/weather/64x64/day/122.png"/> */} 
                                 {/* <img src="https://cdn.weatherapi.com/weather/128x128/day/122.png"/>  */}
                                 {/* </span> */}
-                                {/* <img src={iconoGrande} className="is-pulled-right"/> */}
+                                <img src={iconoGrande} className="is-pulled-right"/>
                                 {/* <p>{iconoGrande}</p> */}
                             </div>
 

@@ -9,3 +9,7 @@ https://www.weatherapi.com/
 
 
 https://www.weatherapi.com/docs/
+
+
+Pagina de iconos
+https://fontawesome.com/v5/search?q=city&o=r

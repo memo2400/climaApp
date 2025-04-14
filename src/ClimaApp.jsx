@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export const ClimaApp = () => {
 
-    const [ciudad, setCiudad] = useState("gorda");
+    const [ciudad, setCiudad] = useState("cd.");
 
     const handleCambioCD = (e) =>{
 
@@ -20,7 +20,8 @@ export const ClimaApp = () => {
     const [wheaterData, setWheaterData] = useState(null)
     const urlBase = "http://api.weatherapi.com/v1/current.json";
     const keys = "306805565013442592d224449251104";
-    const idioma = "es"
+    const idioma = "es";
+    // const iconoGrande = "";
 
     const fetchClima = async() => {
         try{
@@ -36,6 +37,10 @@ export const ClimaApp = () => {
         // console.log(wheaterData.current.condition.icon);  //esto parece hacer el error, ya que se carga antes que el await
         
         // setWheaterData(await GET () );
+
+        // const iconoGrande = wheaterData?.current?.condition?.icon
+        // if (iconoGrande
+        //     ?. iconoGrande.replace('64x64','128x128')            );
         }
         catch (error){
             alert(`Ocurrio el error al hacer la consulta :"${error}"`)
@@ -45,24 +50,36 @@ export const ClimaApp = () => {
     // const iconoAUsar = `https:${wheaterData?.current?.condition?.icon}`
     // http://api.weatherapi.com/v1/current.json?q=Paris&key=306805565013442592d224449251104
 
+    // const iconoGrande = wheaterData?.current?.condition?.icon
+    // if (iconoGrande
+    //     ? iconoGrande.replace('64x64','128x128')
+    //     : iconoGrande='null');
+
+
     return(
+        <div className="is-flex is-flex-direction-column min-vh-100">
         <div className="box">
             <h2 className="title is-2 has-text-centered"> Clima Actual </h2>
             <h3>{ciudad}</h3>
 
+            {/* <span class="icon">
+                <i class="fas fa-home"></i>
+            </span> */}
+
             <div className="columns is-centered">
             <div className="column is-half">
             <form className="box" onSubmit={handleSubmit}>
-                    <p className="control has-icons-left has-icons-right">
+                    <p className="control has-icons-left has-icons-right my-4">
                         
-                        <input className="input my-4" type="text" placeholder="Busque su ciudad" onChange={handleCambioCD}/>
+                        <input className="input" type="text" placeholder="Busque su ciudad" onChange={handleCambioCD}/>
                         
-                        {/* <span className="icon is-small is-left">
-                            <i className="fas fa-envelope"></i>
+                        <span className="icon is-small is-left">
+                            <i className="fas fa-city"></i>
                         </span>
+
                         <span className="icon is-small is-right">
                             <i className="fas fa-check"></i>
-                        </span> */}
+                        </span>
                     </p>
                     <button className="button is-success is-fullwidth" type="submit">Buscar</button>
             </form>
@@ -90,9 +107,12 @@ export const ClimaApp = () => {
                                     {/* <i src={`https:{wheaterData?.current?.condition?.icon}`}></i> */}
 
                                 {/* <img src={iconoAUsar}/> */}
-                                <img src={`https:${wheaterData?.current?.condition?.icon}`} className="is-pulled-right"></img>
+                                <img src={`https:${wheaterData?.current?.condition?.icon.replace("64x64","128x128")}`} className="is-pulled-right"></img>
                                 {/* <img src="https://cdn.weatherapi.com/weather/64x64/day/122.png"/> */} 
+                                {/* <img src="https://cdn.weatherapi.com/weather/128x128/day/122.png"/>  */}
                                 {/* </span> */}
+                                {/* <img src={iconoGrande} className="is-pulled-right"/> */}
+                                {/* <p>{iconoGrande}</p> */}
                             </div>
 
                        
@@ -107,12 +127,14 @@ export const ClimaApp = () => {
   </div>
 </div> */}
                 {/* </div> */}
-            <footer class="footer">
-            <p>
-            <strong>Designed</strong> by <a href="https://jgthms.com">Hermetic Inc</a>
-            </p>
-            </footer>
 
+        </div>
+
+        {/* <footer className="footer mt-auto has-background-light">
+            <p>
+                <strong>Designed</strong> by <a href="https://dem.colmex.mx/ver/herm%C3%A9tico">Hermetic Inc.</a>
+            </p>
+        </footer> */}
         </div>
     );
 }

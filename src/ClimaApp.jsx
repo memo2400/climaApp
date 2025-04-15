@@ -1,9 +1,18 @@
 import { useState } from "react";
+import { fetchClima } from "./climaActual/consultaClimaActual";
 
 
 export const ClimaApp = () => {
 
     const [ciudad, setCiudad] = useState("cd.");
+    const [wheaterData, setwheaterData] = useState(null);
+
+    // const {
+    //     wheaterData,
+    //     iconoGrande,
+
+    //     fetchClimaActual,
+    // } = fetchClima();
 
     const handleCambioCD = (e) =>{
 
@@ -11,41 +20,39 @@ export const ClimaApp = () => {
         console.log(`La ciudad es ${ciudad}`);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();  //para que no se actualiza
-        if (ciudad.length > 3 ? fetchClima(): console.log('No city'));
+        if (ciudad.length > 3 ? 
+            setwheaterData = await fetchClima(ciudad)
+            : console.log('No city'));
 
     }
-
-    const [wheaterData, setWheaterData] = useState(null)
-    const [iconoGrande,seticonoGrande] = useState(null)
-    const urlBase = "http://api.weatherapi.com/v1/current.json";
-    const keys = "306805565013442592d224449251104";
-    const idioma = "es";
     
 
-    const fetchClima = async() => {
-        try{
-        console.log("Si hay ciudad");
+    // const fetchClima = async() => {
+    //     try{
+    //     console.log("Si hay ciudad");
 
-        const urlFinal = `${urlBase}?key=${keys}&q=${ciudad}&lang=${idioma}`;
-        console.log(`Se consulta: ${urlFinal}`);
-        const datosRecibidos = await fetch(urlFinal);
-        const datosTraducidos = await datosRecibidos.json();
-        setWheaterData(datosTraducidos);
-        seticonoGrande(datosTraducidos?.current?.condition?.icon.replace("64x64","128x128"));
+    //     const urlFinal = `${urlBase}?key=${keys}&q=${ciudad}&lang=${idioma}`;
+    //     console.log(`Se consulta: ${urlFinal}`);
+    //     const datosRecibidos = await fetch(urlFinal);
+    //     const datosTraducidos = await datosRecibidos.json();
+    //     setWheaterData(datosTraducidos);
+    //     seticonoGrande(datosTraducidos?.current?.condition?.icon.replace("64x64","128x128"));
 
-        alert(`Se logro la consulta`);
-        // console.log(wheaterData.current.condition.icon);  //esto parece hacer el error, ya que se carga antes que el await
+    //     alert(`Se logro la consulta`);
+    //     // console.log(wheaterData.current.condition.icon);  //esto parece hacer el error, ya que se carga antes que el await
         
-        // setWheaterData(await GET () );
+    //     // setWheaterData(await GET () );
 
-        }
-        catch (error){
-            alert(`Ocurrio el error al hacer la consulta :"${error}"`)
-        }
-    };
-                
+    //     }
+    //     catch (error){
+    //         alert(`Ocurrio el error al hacer la consulta :"${error}"`)
+    //     }
+    // };
+    
+    
+
     // const iconoAUsar = `https:${wheaterData?.current?.condition?.icon}`
     // http://api.weatherapi.com/v1/current.json?q=Paris&key=306805565013442592d224449251104
 

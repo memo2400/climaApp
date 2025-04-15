@@ -40,9 +40,6 @@ export const ClimaApp = () => {
         
         // setWheaterData(await GET () );
 
-        // const iconoGrande = wheaterData?.current?.condition?.icon
-        // if (iconoGrande
-        //     ?. iconoGrande.replace('64x64','128x128')            );
         }
         catch (error){
             alert(`Ocurrio el error al hacer la consulta :"${error}"`)
@@ -52,11 +49,6 @@ export const ClimaApp = () => {
     // const iconoAUsar = `https:${wheaterData?.current?.condition?.icon}`
     // http://api.weatherapi.com/v1/current.json?q=Paris&key=306805565013442592d224449251104
 
-    // const iconoGrande = wheaterData?.current?.condition?.icon
-    // if (iconoGrande
-    //     ? iconoGrande.replace('64x64','128x128')
-    //     : iconoGrande='null');
-
 
     return(
         <div className="is-flex is-flex-direction-column min-vh-100">
@@ -64,9 +56,6 @@ export const ClimaApp = () => {
             <h2 className="title is-2 has-text-centered"> Clima Actual </h2>
             <h3>{ciudad}</h3>
 
-            {/* <span class="icon">
-                <i class="fas fa-home"></i>
-            </span> */}
 
             <div className="columns is-centered">
             <div className="column is-half">
@@ -122,21 +111,9 @@ export const ClimaApp = () => {
                     </div>
                 </div>
             )}
-                    
-{/* <div className="field is-grouped">
-  <div className="control">
-    <button className="button is-link">Submit</button>
-  </div>
-</div> */}
-                {/* </div> */}
+
 
         </div>
-
-        {/* <footer className="footer mt-auto has-background-light">
-            <p>
-                <strong>Designed</strong> by <a href="https://dem.colmex.mx/ver/herm%C3%A9tico">Hermetic Inc.</a>
-            </p>
-        </footer> */}
         </div>
     );
 }

@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { fetchClima } from "./climaActual/consultaClimaActual";
+// import { fetchClimaActual } from "./climaActual/consultaClimaActual";
 
 
 export const ClimaApp = () => {
 
     const [ciudad, setCiudad] = useState("cd.");
-    const [wheaterData, setwheaterData] = useState(null);
 
-    // const {
-    //     wheaterData,
-    //     iconoGrande,
+    const {
+        wheaterData,
+        iconoGrande,
 
-    //     fetchClimaActual,
-    // } = fetchClima();
+        fetchClimaActual,
+    } = fetchClima();
 
     const handleCambioCD = (e) =>{
 
@@ -22,35 +22,25 @@ export const ClimaApp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();  //para que no se actualiza
-        if (ciudad.length > 3 ? 
-            setwheaterData = await fetchClima(ciudad)
+        if (ciudad.length > 3 
+            // ? setwheaterData = await fetchClima(ciudad)
+            ? await fetchClimaActual({ciudad})      // debe ser en llaves de ambos lados o, como solo es una sola strin se pued ir solo con ()
             : console.log('No city'));
+
+            
+        // setwheaterData = await fetchClima(ciudad)
+
+        
+        // if (ciudad.length > 3 )
+        //     {
+        //         await fetchClimaActual({ciudad});
+        //     } else {
+        //         console.log('No city');
+        //     }
 
     }
     
 
-    // const fetchClima = async() => {
-    //     try{
-    //     console.log("Si hay ciudad");
-
-    //     const urlFinal = `${urlBase}?key=${keys}&q=${ciudad}&lang=${idioma}`;
-    //     console.log(`Se consulta: ${urlFinal}`);
-    //     const datosRecibidos = await fetch(urlFinal);
-    //     const datosTraducidos = await datosRecibidos.json();
-    //     setWheaterData(datosTraducidos);
-    //     seticonoGrande(datosTraducidos?.current?.condition?.icon.replace("64x64","128x128"));
-
-    //     alert(`Se logro la consulta`);
-    //     // console.log(wheaterData.current.condition.icon);  //esto parece hacer el error, ya que se carga antes que el await
-        
-    //     // setWheaterData(await GET () );
-
-    //     }
-    //     catch (error){
-    //         alert(`Ocurrio el error al hacer la consulta :"${error}"`)
-    //     }
-    // };
-    
     
 
     // const iconoAUsar = `https:${wheaterData?.current?.condition?.icon}`

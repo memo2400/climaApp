@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 
-export const fetchClima = async (ciudad) => {
+// export const fetchClima = async ({ciudad}) => {
+export const fetchClima = () => {
 
     const [wheaterData, setWheaterData] = useState(null)
     const [iconoGrande,seticonoGrande] = useState(null)
@@ -9,7 +10,8 @@ export const fetchClima = async (ciudad) => {
     const keys = "306805565013442592d224449251104";
     const idioma = "es";
 
-    // const fetchClimaActual = async ({ciudad}) => {
+    const fetchClimaActual = async ({ciudad}) => {
+        
         try{
 
         console.log("Si hay ciudad");
@@ -30,7 +32,7 @@ export const fetchClima = async (ciudad) => {
         catch (error){
             alert(`Ocurrio el error al hacer la consulta :"${error}"`)
         }
-    // };
+    };
 
     return(
         {wheaterData,

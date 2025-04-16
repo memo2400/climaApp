@@ -13,3 +13,9 @@ https://www.weatherapi.com/docs/
 
 Pagina de iconos
 https://fontawesome.com/v5/search?q=city&o=r
+
+
+Isntalar Rutas
+npm install react-router-dom
+
+

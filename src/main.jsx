@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client'
 import { ClimaApp } from './ClimaApp'
 import { NavBar } from './basePage/navBar'
 import { Footer } from './basePage/Footer'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ForecastPage } from './pages/forecast/ForecastPage'
 
 // import {wheaterApp} from './wheaterApp' // asi no sirve debe iniciarf ocn mayusculas
 // import {appClima} from './WheaterApp'
@@ -11,10 +13,16 @@ import { Footer } from './basePage/Footer'
 createRoot(document.getElementById('root')).render(
 // ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <BrowserRouter>
     <NavBar/>
-    <ClimaApp/>
-    {/* <div>Hola</div> */}
-    {/* <appClima></appClima> */}
-    <Footer/>
+      <Routes>
+      <Route exact path= "/" element = {<ClimaApp/>} />
+      <Route exact path= "/pronostico" element = {<ForecastPage/>} />
+      {/* <div>Hola</div> */}
+      {/* <appClima></appClima> */}
+      
+      {/* <Footer/> */}
+    </Routes>
+    </BrowserRouter>
   </StrictMode>,
 )

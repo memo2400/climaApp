@@ -28,7 +28,7 @@ export const ForecastPage = () => {
                     {
                         tiempo : elemento.time,
                         temperatura: elemento.temp_c,
-                        id : index,
+                        id : elemento.time,
                     }
                 ))
 
@@ -86,6 +86,7 @@ export const ForecastPage = () => {
 
                                 <ul className="my-5 has-text-centered">
                                     {forecastData?.forecast?.forecastday.flatMap(hora =>
+                                        // hora.hour.map((elemento, index) =>  // este era para un solo dia, con index inventado
                                         hora.hour.map(elemento => 
                                         (
                                             // uso el time que es fecha-hora como key

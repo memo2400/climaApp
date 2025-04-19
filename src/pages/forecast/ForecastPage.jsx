@@ -44,6 +44,14 @@ export const ForecastPage = () => {
     [forecastData]
     );
 
+    const [ciudad, setCiudad] = useState("Cordoba Mexico");
+
+    const handleCambioCD = (target) => {
+        setCiudad(target.value);
+        console.log (`La ciudad - hook cambio a ${ciudad}`)
+        console.log (`La ciudad cambio a ${target.value}`)
+    }
+
     return (
         <>
         {/* <div className="is-flex is-flex-direction-column min-vh-100"> */}
@@ -58,7 +66,7 @@ export const ForecastPage = () => {
                     {/* <form className="box"> */}
                             <p className="control has-icons-left has-icons-right my-4">
                                 
-                                {/* <input className="input" type="text" placeholder="Busque su ciudad" onChange={handleCambioCD}/> */}
+                                <input className="input" type="text" placeholder="Busque su ciudad" onChange={ (e) => handleCambioCD(e.target)}/>
                                 
                                 <span className="icon is-small is-left">
                                     <i className="fas fa-city"></i>

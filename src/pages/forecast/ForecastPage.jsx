@@ -74,6 +74,11 @@ export const ForecastPage = () => {
                                     <i className="fas fa-city"></i>
                                 </span>
 
+                                <label className="checkbox">
+                                    <input type="checkbox"/>
+                                    Autodetectar Ubicación
+                                </label>
+
                                 <span className="icon is-small is-right">
                                     <i className="fas fa-check"></i>
                                 </span>

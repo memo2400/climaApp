@@ -24,17 +24,19 @@ export const ForecastPage = () => {
         if (forecastData?.forecast?.forecastday)
         {
             const datoGrafica = forecastData?.forecast?.forecastday.flatMap ( dia =>
-                dia.hour.map(elemento => (
+                dia.hour.map((elemento, index) => (
                     {
                         tiempo : elemento.time,
                         temperatura: elemento.temp_c,
-                        // i : index,
+                        id : index,
                     }
                 ))
 
             );
 
             setcadenaPronostico (datoGrafica);
+            // console.log(datoGrafica);
+            console.log(cadenaPronostico);
         }
 
         },
@@ -70,35 +72,38 @@ export const ForecastPage = () => {
                             {forecastData?.forecast?.forecastday && (
 
                                 <>
-                                {/* <ul>
-                                    {forecastData?.forecast?.forecastday.flatMap(minuto =>
-                                        minuto.hour.map((elemento, index) => 
-                                        (
-                                        <li key={index}>Temperatura: {elemento.temp_c} °C ------//-----  Hora: {elemento.time} </li>
-                                        )
-                                    )
-                                    )}
-                                </ul> */}
-
+                                <div className="my-5">
                                 <ResponsiveContainer width="100%" height={300}>
                                     <LineChart data={cadenaPronostico}>
                                         <CartesianGrid strokeDasharray="3 3" />
-                                        <XAxis dataKey="time" tick={{ fontSize: 10 }} />
-                                        <YAxis dataKey="temperature" unit="°C" />
+                                        <XAxis dataKey="tiempo" tick={{ fontSize: 10 }} />
+                                        <YAxis dataKey="temperatura" unit="°C" />
                                         <Tooltip />
-                                        <Line type="monotone" dataKey="temperature" stroke="#8884d8" />
+                                        <Line type="monotone" dataKey="temperatura" stroke="#8884d8" />
                                     </LineChart>
                                 </ResponsiveContainer>
+                                </div>
+
+                                <ul className="my-5 has-text-centered">
+                                    {forecastData?.forecast?.forecastday.flatMap(hora =>
+                                        hora.hour.map(elemento => 
+                                        (
+                                            // uso el time que es fecha-hora como key
+                                        <li key={elemento.time}>Temperatura: {elemento.temp_c} °C ------//-----  Hora: {elemento.time} </li>
+                                        )
+                                    )
+                                    )}
+                                </ul>
 
 
-{/*                             // <div>
-                                //     { (forecastData?.map({ location, current, forecast }) => (
+                            {/*  <div>
+                                     { (forecastData?.map({ location, current, forecast }) => (
 
-                                //         <p>{location}</p>
-                                //         <p>{current}</p>
+                                         <p>{location}</p>
+                                         <p>{current}</p>
 
-                                //     ))}
-                                // </div> */}
+                                     ))}
+                                 </div> */}
                                 
 
                                 <pre className="my-5">{JSON.stringify(forecastData, null, 2)}</pre>

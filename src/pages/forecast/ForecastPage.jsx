@@ -8,12 +8,14 @@ export const ForecastPage = () => {
         datosTraducidos,
         forecastData,
 
-        fetchForecast
+        fetchForecast,
+        fetchForecast2,
     } = forecast();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await fetchForecast();
+        // await fetchForecast();
+        await fetchForecast2(ciudad);
         console.log("se hizo la consulta forecast")
     }
 
@@ -80,6 +82,7 @@ export const ForecastPage = () => {
                             {forecastData?.forecast?.forecastday && (
 
                                 <>
+                                <h4 className="title is-4 has-text-centered has-text-info">Pronóstico para: {forecastData?.location?.name}, {forecastData?.location?.country}</h4>
                                 <div className="my-5">
                                 <ResponsiveContainer width="100%" height={300}>
                                     <LineChart data={cadenaPronostico}>

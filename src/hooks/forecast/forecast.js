@@ -23,11 +23,21 @@ export const forecast = () => {
         
     }
 
+    const fetchForecast2 = async (ciudad) => {
+
+        const fulUrl = `${urlBase}?q=${ciudad}&key=${keys}&days=${dias}`;
+        const datosForecast = await fetch (fulUrl);
+        const traduccion = await datosForecast.json();
+        setforecastData(traduccion);
+        
+    }
+
     return ({
         datosTraducidos,
         forecastData,
 
         fetchForecast,
+        fetchForecast2,
     
 });
 

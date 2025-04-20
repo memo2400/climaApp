@@ -23,9 +23,9 @@ export const forecast = () => {
         
     }
 
-    const fetchForecast2 = async (ciudad) => {
+    const fetchForecast2 = async ({ciudad, diasPronostico}) => {
 
-        const fulUrl = `${urlBase}?q=${ciudad}&key=${keys}&days=${dias}`;
+        const fulUrl = `${urlBase}?q=${ciudad}&key=${keys}&days=${diasPronostico}`;
         const datosForecast = await fetch (fulUrl);
         const traduccion = await datosForecast.json();
         setforecastData(traduccion);

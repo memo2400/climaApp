@@ -15,7 +15,7 @@ export const ForecastPage = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         // await fetchForecast();
-        await fetchForecast2(ciudad);
+        await fetchForecast2({ciudad, diasPronostico});
         console.log("se hizo la consulta forecast")
     }
 
@@ -63,6 +63,13 @@ export const ForecastPage = () => {
 
     }
 
+    const [diasPronostico, setdiasPronostico]= useState("2");
+    const handleCambioDias = (target) => {
+        setdiasPronostico(target.value);
+        console.log(`Los dias son "${target.value}"`);
+        // console.log(`Los dias guradados son "${diasPronostico}"`);
+    }
+
     return (
         <>
         {/* <div className="is-flex is-flex-direction-column min-vh-100"> */}
@@ -84,15 +91,20 @@ export const ForecastPage = () => {
                                     <i className="fas fa-city"></i>
                                 </span>
 
-                                <label className="checkbox my-2" onChange={handleCheck}>
-                                    <input type="checkbox"/>
-                                    &nbsp; Autodetectar Ubicación
-                                </label>
-
                                 <span className="icon is-small is-right">
                                     <i className="fas fa-check"></i>
                                 </span>
                             </p>
+
+                            <p>
+                                <input className="input" type="number" placeholder="Dias a consultar" onChange={ (e) => handleCambioDias(e.target)}></input>
+                            </p>
+                            
+                            <label className="checkbox mb-3" onChange={handleCheck}>
+                                    <input type="checkbox"/>
+                                    &nbsp; Autodetectar ubicación
+                            </label>
+
                             <button className="button is-warning is-fullwidth" type="submit">Buscar</button>
                             {forecastData?.forecast?.forecastday && (
 

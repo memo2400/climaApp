@@ -29,6 +29,7 @@ export const forecast = () => {
         const datosForecast = await fetch (fulUrl);
         const traduccion = await datosForecast.json();
         setforecastData(traduccion);
+        console.log (`La ruta buscada fue ${fulUrl}`);
         
     }
 

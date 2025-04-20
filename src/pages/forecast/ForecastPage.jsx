@@ -46,12 +46,21 @@ export const ForecastPage = () => {
     [forecastData]
     );
 
-    const [ciudad, setCiudad] = useState("Cordoba Mexico");
+    // const [ciudad, setCiudad] = useState("Cordoba Mexico");
+    const [ciudad, setCiudad] = useState("");
 
     const handleCambioCD = (target) => {
         setCiudad(target.value);
         console.log (`La ciudad - hook cambio a ${ciudad}`)
         console.log (`La ciudad cambio a ${target.value}`)
+    }
+
+    const [checkStatus, setCheckStatus] = useState (false);
+
+    const handleCheck = () => {
+        setCheckStatus (!checkStatus);
+        setCiudad("auto:ip");
+
     }
 
     return (
@@ -66,17 +75,18 @@ export const ForecastPage = () => {
                 <div className="column is-half">
                     <form className="box" onSubmit={handleSubmit}>
                     {/* <form className="box"> */}
-                            <p className="control has-icons-left has-icons-right my-4">
+                            <p className="control has-icons-left has-icons-right mt-4 mb-1">
                                 
-                                <input className="input" type="text" placeholder="Busque su ciudad" onChange={ (e) => handleCambioCD(e.target)}/>
+                                <input className="input" type="text" placeholder="Busque su ciudad" onChange={ (e) => handleCambioCD(e.target)}
+                                    disabled={checkStatus}/>
                                 
                                 <span className="icon is-small is-left">
                                     <i className="fas fa-city"></i>
                                 </span>
 
-                                <label className="checkbox">
+                                <label className="checkbox my-2" onChange={handleCheck}>
                                     <input type="checkbox"/>
-                                    Autodetectar Ubicación
+                                    &nbsp; Autodetectar Ubicación
                                 </label>
 
                                 <span className="icon is-small is-right">

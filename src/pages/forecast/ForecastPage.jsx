@@ -97,7 +97,8 @@ export const ForecastPage = () => {
                             </p>
 
                             <p>
-                                <input className="input" type="number" placeholder="Dias a consultar" onChange={ (e) => handleCambioDias(e.target)}></input>
+                                <input className="input" type="number" placeholder="Dias a consultar" onChange={ (e) => handleCambioDias(e.target)}
+                                max={5}></input>
                             </p>
                             
                             <label className="checkbox mb-3" onChange={handleCheck}>
@@ -111,12 +112,14 @@ export const ForecastPage = () => {
                                 <>
                                 <h4 className="title is-4 has-text-centered has-text-info">Pronóstico para: {forecastData?.location?.name}, {forecastData?.location?.country}</h4>
                                 <div className="my-5">
-                                <ResponsiveContainer width="100%" height={300}>
+                                <ResponsiveContainer width="100%" height={400}>
                                     <LineChart data={cadenaPronostico}>
-                                        <CartesianGrid strokeDasharray="3 3" />
-                                        <XAxis dataKey="tiempo" tick={{ fontSize: 10 }} />
-                                        <YAxis dataKey="temperatura" unit="°C" />
-                                        <Tooltip />
+                                        <CartesianGrid strokeDasharray="3 3" stroke="#aaa" />
+                                        {/* textAnchor: 'end' hace que la etiqueta no se salga */}
+                                        <XAxis dataKey="tiempo" tick={{ fontSize: 10, angle: -65, textAnchor: 'end'}} interval={10} height={100}/>
+                                        <YAxis dataKey="temperatura" unit=" °C" />
+                                        {/* da el hovering el tooltip */}
+                                        <Tooltip />         
                                         <Line type="monotone" dataKey="temperatura" stroke="#8884d8" />
                                     </LineChart>
                                 </ResponsiveContainer>

@@ -39,6 +39,8 @@ export const ForecastPage = () => {
             setcadenaPronostico (datoGrafica);
             // console.log(datoGrafica);
             console.log(cadenaPronostico);
+            console.log(`Largo de cadena ${cadenaPronostico.length}`);
+            console.log(`Largo de cadena ${Math.trunc(cadenaPronostico.length / 10) - 1}`);
         }
 
         },
@@ -116,7 +118,7 @@ export const ForecastPage = () => {
                                     <LineChart data={cadenaPronostico}>
                                         <CartesianGrid strokeDasharray="3 3" stroke="#aaa" />
                                         {/* textAnchor: 'end' hace que la etiqueta no se salga */}
-                                        <XAxis dataKey="tiempo" tick={{ fontSize: 10, angle: -65, textAnchor: 'end'}} interval={10} height={100}/>
+                                        <XAxis dataKey="tiempo" tick={{ fontSize: 10, angle: -65, textAnchor: 'end'}} interval={Math.trunc(cadenaPronostico.length / 12)} height={100}/>
                                         <YAxis dataKey="temperatura" unit=" °C" />
                                         {/* da el hovering el tooltip */}
                                         <Tooltip />         

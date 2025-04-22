@@ -72,6 +72,8 @@ export const ForecastPage = () => {
         // console.log(`Los dias guradados son "${diasPronostico}"`);
     }
 
+    var map = L.map('map').setView([51.505, -0.09], 13);
+
     return (
         <>
         {/* <div className="is-flex is-flex-direction-column min-vh-100"> */}
@@ -158,7 +160,13 @@ export const ForecastPage = () => {
                     </form>
                 </div>
             </div>
-        
+
+            <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+            
+            <div className="box" style="height: 200px;" > {map} </div>
+
         </div>      
         </>
 

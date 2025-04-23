@@ -44,13 +44,14 @@ export const NavBar = () => {
                         <a className="navbar-link" onClick={cambiarDocDesplegado}> Docs </a>
                         <div className="navbar-dropdown is-boxed">
                             <a className="navbar-item" href="/pronostico"> Pronóstico </a>
-                            <a className="navbar-item" href="/"> Modifiers </a>
+                            <a className="navbar-item" href="/astronomia"> Astronomia </a>
+                            
                             <hr className="navbar-divider"/>
-                            <a className="navbar-item" href="https://bulma.io/documentation/columns/basics/"> Columns </a>
-                            <a className="navbar-item is-selected" href="https://bulma.io/documentation/layout/container/"> Layout </a>
-                            <a className="navbar-item" href="https://bulma.io/documentation/form/general/"> Form </a>
-                            <a className="navbar-item" href="https://bulma.io/documentation/elements/box/"> Elements </a>
-                            <a className="navbar-item" href="https://bulma.io/documentation/components/breadcrumb/"> Components </a>
+                            <a className="navbar-item" href="/"> Columns </a>
+                            <a className="navbar-item is-selected" href="/"> Desconocido </a>
+                            <a className="navbar-item" href="/"> Form </a>
+                            <a className="navbar-item" href="/"> Contacto </a>
+                            <a className="navbar-item" href="/"> Ayuda </a>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,27 @@
+
+
+
+{
+    "location": {
+        "name": "Cordoba",
+        "region": "Veracruz-Llave",
+        "country": "Mexico",
+        "lat": 18.886,
+        "lon": -96.931,
+        "tz_id": "America/Mexico_City",
+        "localtime_epoch": 1745424172,
+        "localtime": "2025-04-23 10:02"
+    },
+    "astronomy": {
+        "astro": {
+            "sunrise": "06:05 AM",
+            "sunset": "06:47 PM",
+            "moonrise": "02:59 AM",
+            "moonset": "02:51 PM",
+            "moon_phase": "Waning Crescent",
+            "moon_illumination": 27,
+            "is_moon_up": 1,
+            "is_sun_up": 1
+        }
+    }
+}

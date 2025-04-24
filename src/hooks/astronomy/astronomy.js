@@ -35,10 +35,13 @@ export const astronomy = () => {
 
             }
 
-            // if (datosAstronomicos?.astronomy){
-            //     setcadenaAstronomia[0] = datosAstronomicos?.astronomy
+            if (datosAstronomicos?.astronomy){
+                setcadenaAstronomia[0] = datosAstronomicos?.astronomy?.astro?.sunrise
+                setcadenaAstronomia[1] = datosAstronomicos?.astronomy?.astro?.sunset
+                setcadenaAstronomia[2] = datosAstronomicos?.astronomy?.astro?.moonrise
+                setcadenaAstronomia[3] = datosAstronomicos?.astronomy?.astro?.moonset
 
-            // }
+            }
         }, 
         [datosAstronomicos]
     );
@@ -51,6 +54,7 @@ export const astronomy = () => {
 
         datosAstronomicos,
         ciudadEdoPais,
+        cadenaAstronomia,
 
         cosultarAstronomia,
     })

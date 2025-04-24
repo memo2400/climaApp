@@ -10,7 +10,7 @@ export const AstronomyPage = () => {
 
     }
 
-    const {datosAstronomicos, ciudadEdoPais, cosultarAstronomia} = astronomy();
+    const {datosAstronomicos, ciudadEdoPais, cadenaAstronomia, cosultarAstronomia} = astronomy();
 
     return (
 

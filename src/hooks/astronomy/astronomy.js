@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export const astronomy = () => {
@@ -9,7 +9,7 @@ export const astronomy = () => {
     const clave = "306805565013442592d224449251104";
     const idioma = "es";
 
-    const cosultarAtronomia = async (ciudad) => {
+    const cosultarAstronomia = async (ciudad) => {
     
         const urlCompleta = `${urlBase}?key=${clave}&q=${ciudad}&lang=${idioma}`;
         console.log(`La url astronimca es "${urlCompleta}"`);
@@ -20,12 +20,39 @@ export const astronomy = () => {
 
     }
 
+    const [ciudadEdoPais, setciudadEdoPais] = useState(null)
+    const [cadenaAstronomia, setcadenaAstronomia] = useState([])
+    // useEffect (() => {}, [datosAstronomicos]); // eroor al usar "="
+    
+    useEffect (() => {
+            if (datosAstronomicos?.location){
+
+                const ciudad = datosAstronomicos?.location?.name
+                const estado = datosAstronomicos?.location?.region
+                const pais = datosAstronomicos?.location?.country
+
+                setciudadEdoPais (`${ciudad}, ${estado}, ${pais}`);
+
+            }
+
+            // if (datosAstronomicos?.astronomy){
+            //     setcadenaAstronomia[0] = datosAstronomicos?.astronomy
+
+            // }
+        }, 
+        [datosAstronomicos]
+    );
+
+    
 
 
 
     return({
 
         datosAstronomicos,
+        ciudadEdoPais,
+
+        cosultarAstronomia,
     })
 
 }

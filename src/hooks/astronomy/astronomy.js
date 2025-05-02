@@ -36,10 +36,16 @@ export const astronomy = () => {
             }
 
             if (datosAstronomicos?.astronomy){
-                setcadenaAstronomia[0] = datosAstronomicos?.astronomy?.astro?.sunrise
-                setcadenaAstronomia[1] = datosAstronomicos?.astronomy?.astro?.sunset
-                setcadenaAstronomia[2] = datosAstronomicos?.astronomy?.astro?.moonrise
-                setcadenaAstronomia[3] = datosAstronomicos?.astronomy?.astro?.moonset
+                // setcadenaAstronomia[0] = datosAstronomicos?.astronomy?.astro?.sunrise
+                // setcadenaAstronomia[1] = datosAstronomicos?.astronomy?.astro?.sunset
+                // setcadenaAstronomia[2] = datosAstronomicos?.astronomy?.astro?.moonrise
+                // setcadenaAstronomia[3] = datosAstronomicos?.astronomy?.astro?.moonset
+
+                // setcadenaAstronomia[4] = datosAstronomicos?.astronomy?.astro?.moon_phase
+                // setcadenaAstronomia[5] = datosAstronomicos?.astronomy?.astro?.moon_illumination
+
+                const astro = datosAstronomicos.astronomy.astro;
+                setcadenaAstronomia([astro]);
 
             }
         }, 

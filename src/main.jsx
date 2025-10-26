@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ClimaApp } from './ClimaApp'
-import { NavBar } from './basePage/navBar'
+import { NavBar } from './basePage/NavBar'
 import { Footer } from './basePage/Footer'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ForecastPage } from './pages/forecast/ForecastPage'

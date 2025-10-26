@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { fetchClima } from "./climaActual/consultaClimaActual";
-// import { fetchClimaActual } from "./climaActual/consultaClimaActual";
-
 
 export const ClimaApp = () => {
 
@@ -41,18 +39,10 @@ export const ClimaApp = () => {
     }
     
 
-    
-
-    // const iconoAUsar = `https:${wheaterData?.current?.condition?.icon}`
-    // http://api.weatherapi.com/v1/current.json?q=Paris&key=306805565013442592d224449251104
-
-
     return(
         <div className="is-flex is-flex-direction-column min-vh-100">
         <div className="box">
             <h2 className="title is-2 has-text-centered"> Clima Actual </h2>
-            <h3>{ciudad}</h3>
-
 
             <div className="columns is-centered">
             <div className="column is-half">
@@ -91,19 +81,9 @@ export const ClimaApp = () => {
                                 <p className="has-text-right-desktop is-size-3">{wheaterData?.current?.temp_c} °C</p>
                                 <p className="has-text-right-desktop">{wheaterData?.current?.condition?.text}</p>
                 
-                                {/* <span className="icon is-small is-center"> */}
-                                    {/* <i src={`https:{wheaterData?.current?.condition?.icon}`}></i> */}
-
-                                {/* <img src={iconoAUsar}/> */}
-                                <img src={`https:${wheaterData?.current?.condition?.icon.replace("64x64","128x128")}`} className="is-pulled-right"></img>
-                                {/* <img src="https://cdn.weatherapi.com/weather/64x64/day/122.png"/> */} 
-                                {/* <img src="https://cdn.weatherapi.com/weather/128x128/day/122.png"/>  */}
-                                {/* </span> */}
                                 <img src={iconoGrande} className="is-pulled-right"/>
-                                {/* <p>{iconoGrande}</p> */}
-                            </div>
-
-                       
+                                
+                            </div>                   
                         </div>
                     </div>
                 </div>

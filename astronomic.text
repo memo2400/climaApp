@@ -26,3 +26,7 @@ https://www.flaticon.com/free-icon/sunrise_3222792?related_id=3222792&origin=sea
         }
     }
 }
+
+
+// const iconoAUsar = `https:${wheaterData?.current?.condition?.icon}`
+    // http://api.weatherapi.com/v1/current.json?q=Paris&key=306805565013442592d224449251104

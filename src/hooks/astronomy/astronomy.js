@@ -5,7 +5,7 @@ export const astronomy = () => {
 
     const [datosAstronomicos, setDatosAstronomicos] = useState(null);
 
-    const urlBase = "http://api.weatherapi.com/v1/astronomy.json";
+    const urlBase = "https://api.weatherapi.com/v1/astronomy.json";
     const clave = "306805565013442592d224449251104";
     const idioma = "es";
 

@@ -21,12 +21,12 @@ export const ClimaApp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();  //para que no se actualiza
         if (ciudad.length > 3 
-            // ? setwheaterData = await fetchClima(ciudad)
+            // (ciudad)
             ? await fetchClimaActual({ciudad})      // debe ser en llaves de ambos lados o, como solo es una sola strin se pued ir solo con ()
             : console.log('No city'));
 
             
-        // setwheaterData = await fetchClima(ciudad)
+        //setwheaterData = await fetchClima(ciudad)
 
         
         // if (ciudad.length > 3 )

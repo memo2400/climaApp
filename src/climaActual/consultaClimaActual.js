@@ -6,7 +6,7 @@ export const fetchClima = () => {
 
     const [wheaterData, setWheaterData] = useState(null)
     const [iconoGrande,seticonoGrande] = useState(null)
-    const urlBase = "http://api.weatherapi.com/v1/current.json";
+    const urlBase = "https://api.weatherapi.com/v1/current.json";
     const keys = "306805565013442592d224449251104";
     const idioma = "es";
 
@@ -25,8 +25,7 @@ export const fetchClima = () => {
 
         alert(`Se logro la consulta`);
         // console.log(wheaterData.current.condition.icon);  //esto parece hacer el error, ya que se carga antes que el await
-        
-        // setWheaterData(await GET () );
+
 
         }
         catch (error){

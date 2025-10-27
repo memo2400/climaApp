@@ -1,5 +1,5 @@
 import { astronomy } from "../../hooks/astronomy/astronomy";
-
+import imagenAstro from "../../assets/astronomy/sunrise.png";
 
 export const AstronomyPage = () => {
 
@@ -10,7 +10,7 @@ export const AstronomyPage = () => {
 
     }
 
-    const {datosAstronomicos, ciudadEdoPais, cadenaAstronomia, cosultarAstronomia} = astronomy();
+    const {datosAstronomicos, ciudadEdoPais, cadenaAstronomia, astronomia, cosultarAstronomia} = astronomy();
 
     return (
 
@@ -22,7 +22,7 @@ export const AstronomyPage = () => {
                     <div className="column is-half">
                         <form className="box" onSubmit={handleSubmit}>
 
-                            <button className="button is-primary">Consulta</button>
+                            <button className="button is-primary">Consultar</button>
                         </form>
                     </div>
                 </div>
@@ -41,14 +41,15 @@ export const AstronomyPage = () => {
                     )
                 }
                 { cadenaAstronomia && (
-                            <table className="table">
+                    <div className="columns is-centered">
+                            <table className="table table-is-center">
                                 <thead></thead>
-                                <tbody>
-                                    {/* <tr><td><p>{cadenaAstronomia[4]}</p></td></tr> */}
-                                    <tr><td>Valor: [{cadenaAstronomia[1]}]</td></tr>
-                                    <tr><td><p>{cadenaAstronomia[2]}</p></td></tr>
+                                <tbody>                                    
+                                    <tr><td>Sunrise: {astronomia?.sunrise}</td><td><img src={imagenAstro} width={100}></img></td></tr>
+                                    <tr><td>Sunset: {astronomia?.sunset}</td><td><img src="../../assets/astronomy/sunrise.png"></img> </td></tr>
                                 </tbody>
                             </table>
+                    </div>
                             )
                             // : <p>Nada</p>
                 }

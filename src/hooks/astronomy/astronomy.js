@@ -21,6 +21,7 @@ export const astronomy = () => {
     }
 
     const [ciudadEdoPais, setciudadEdoPais] = useState(null)
+    const [astronomia, setastronomia] = useState(null)
     const [cadenaAstronomia, setcadenaAstronomia] = useState([])
     // useEffect (() => {}, [datosAstronomicos]); // eroor al usar "="
     
@@ -34,18 +35,22 @@ export const astronomy = () => {
                 setciudadEdoPais (`${ciudad}, ${estado}, ${pais}`);
 
             }
+            if (datosAstronomicos?.astronomy?.astro){
+                setastronomia(datosAstronomicos?.astronomy?.astro);
+            }
 
             if (datosAstronomicos?.astronomy){
-                // setcadenaAstronomia[0] = datosAstronomicos?.astronomy?.astro?.sunrise
-                // setcadenaAstronomia[1] = datosAstronomicos?.astronomy?.astro?.sunset
+                setcadenaAstronomia[0] = datosAstronomicos?.astronomy?.astro?.sunrise
+                setcadenaAstronomia[1] = datosAstronomicos?.astronomy?.astro?.sunset
                 // setcadenaAstronomia[2] = datosAstronomicos?.astronomy?.astro?.moonrise
                 // setcadenaAstronomia[3] = datosAstronomicos?.astronomy?.astro?.moonset
 
                 // setcadenaAstronomia[4] = datosAstronomicos?.astronomy?.astro?.moon_phase
                 // setcadenaAstronomia[5] = datosAstronomicos?.astronomy?.astro?.moon_illumination
 
-                const astro = datosAstronomicos.astronomy.astro;
-                setcadenaAstronomia([astro]);
+                // V2 no funciono se mostraba solo []
+                // const astro = datosAstronomicos.astronomy.astro;
+                // setcadenaAstronomia([astro]);
 
             }
         }, 
@@ -61,6 +66,7 @@ export const astronomy = () => {
         datosAstronomicos,
         ciudadEdoPais,
         cadenaAstronomia,
+        astronomia,
 
         cosultarAstronomia,
     })

@@ -60,7 +60,7 @@ export const AstronomyPage = () => {
                     </div>
                     )
                 }
-                { cadenaAstronomia && (
+                { astronomia && (
                     <div className="columns is-centered mt-4 mb-4">
                             <table className="table table-is-center is-bordered">
                                 <thead></thead>

@@ -84,7 +84,7 @@ export const AstronomyPage = () => {
                     
                     <div className="column is-one-quarter box">
                         <pre className="my-5">
-                            {JSON.stringify(datosAstronomicos, null, 2)}
+                            {/* {JSON.stringify(datosAstronomicos, null, 2)} */}
                         </pre>
                     </div>
                 )}

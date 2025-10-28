@@ -41,17 +41,17 @@ export const NavBar = () => {
                     <a className="navbar-item" href="/"> Home </a>
                     {/* <div className="navbar-item has-dropdown is-active"> */}
                     <div className= {`navbar-item has-dropdown ${docDesplegado? 'is-active' : ''}`}>
-                        <a className="navbar-link" onClick={cambiarDocDesplegado}> Docs </a>
+                        <a className="navbar-link" onClick={cambiarDocDesplegado}> Menu </a>
                         <div className="navbar-dropdown is-boxed">
                             <a className="navbar-item" href="/"> Pronóstico </a>
-                            <a className="navbar-item" href="/astronomia"> Astronomia </a>
+                            <a className="navbar-item" href="/Astronomia"> Astronomía </a>
                             
                             <hr className="navbar-divider"/>
-                            <a className="navbar-item" href="/#"> Columns </a>
-                            <a className="navbar-item is-selected" href="/"> Desconocido </a>
-                            <a className="navbar-item" href="/#"> Form </a>
-                            <a className="navbar-item" href="/#"> Contacto </a>
-                            <a className="navbar-item" href="/#"> Ayuda </a>
+                            <a className="navbar-item" href="/#"> Demo </a>
+                            <a className="navbar-item is-selected" href="/"> Demo </a>
+                            <a className="navbar-item" href="/#"> Demo </a>
+                            <a className="navbar-item" href="/#"> Demo </a>
+                            <a className="navbar-item" href="/Astronomia"> Astronomía </a>
                         </div>
                     </div>
                 </div>

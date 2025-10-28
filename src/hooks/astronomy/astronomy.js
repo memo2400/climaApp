@@ -23,8 +23,11 @@ export const astronomy = () => {
     const [ciudadEdoPais, setciudadEdoPais] = useState(null)
     const [astronomia, setastronomia] = useState(null)
     const [cadenaAstronomia, setcadenaAstronomia] = useState([])
-    // useEffect (() => {}, [datosAstronomicos]); // eroor al usar "="
+    // useEffect (() => {}, [datosAstronomicos]); // error al usar "="
     
+    const [moonUp, setmoonUp] = useState("sin informacion");
+    const [sunUp, setsunUp] = useState("sin informacion");
+
     useEffect (() => {
             if (datosAstronomicos?.location){
 
@@ -53,6 +56,21 @@ export const astronomy = () => {
                 // setcadenaAstronomia([astro]);
 
             }
+
+            if (datosAstronomicos?.astronomy?.astro?.is_moon_up === 1){
+                setmoonUp("Yes");
+            }
+            else{
+                setmoonUp("Not");
+            }
+
+            if (datosAstronomicos?.astronomy?.astro?.is_sun_up === 1){
+                setsunUp("Yes");
+            }
+            else{
+                setsunUp("Not");
+            }
+
         }, 
         [datosAstronomicos]
     );
@@ -67,6 +85,8 @@ export const astronomy = () => {
         ciudadEdoPais,
         cadenaAstronomia,
         astronomia,
+        moonUp,
+        sunUp,
 
         cosultarAstronomia,
     })

@@ -23,7 +23,8 @@ export const AstronomyPage = () => {
         setCiudad(e.target.value);
     }
 
-    const {datosAstronomicos, ciudadEdoPais, cadenaAstronomia, astronomia, cosultarAstronomia} = astronomy();
+    const {datosAstronomicos, ciudadEdoPais, cadenaAstronomia, astronomia, moonUp, sunUp,
+        cosultarAstronomia} = astronomy();
 
     return (
         <>
@@ -70,6 +71,11 @@ export const AstronomyPage = () => {
 
                                     <tr><td className="is-vcentered">Moonrise: {astronomia?.moonrise}</td><td><img src={moonriseImg} width={100}></img> </td></tr>
                                     <tr><td className="is-vcentered">Moonset: {astronomia?.moonset}</td><td><img src={moonsetImg} width={100}></img> </td></tr>
+
+                                    <tr><td className="is-vcentered">Moon phase: {astronomia?.moon_phase}</td><td> -- </td></tr>
+                                    
+                                    <tr><td className="is-vcentered">Is sun in the sky? {sunUp}</td><td> -- </td></tr>
+                                    <tr><td className="is-vcentered">Is moon in the sky? {moonUp}</td><td> -- </td></tr>
                                 </tbody>
                             </table>
                     </div>

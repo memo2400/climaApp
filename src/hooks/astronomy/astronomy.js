@@ -9,7 +9,7 @@ export const astronomy = () => {
     const clave = "306805565013442592d224449251104";
     const idioma = "es";
 
-    const cosultarAstronomia = async (ciudad) => {
+    const cosultarAstronomia = async ({ciudad}) => {    //debe llevar {}
     
         const urlCompleta = `${urlBase}?key=${clave}&q=${ciudad}&lang=${idioma}`;
         console.log(`La url astronimca es "${urlCompleta}"`);

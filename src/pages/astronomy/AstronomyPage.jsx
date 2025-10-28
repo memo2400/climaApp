@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { astronomy } from "../../hooks/astronomy/astronomy";
-import imagenAstro from "../../assets/astronomy/sunrise.png";
+import sunriseImg from "../../assets/astronomy/sunrise.png";
+import sunsetImg from "../../assets/astronomy/sunset.png";
+import moonriseImg from "../../assets/astronomy/moonrise.png";
+import moonsetImg from "../../assets/astronomy/moonset.png";
 
 export const AstronomyPage = () => {
 
@@ -23,7 +26,6 @@ export const AstronomyPage = () => {
     const {datosAstronomicos, ciudadEdoPais, cadenaAstronomia, astronomia, cosultarAstronomia} = astronomy();
 
     return (
-
         <>
             <div className="box">
                 <h4 className="title has-text-centered"> Datos astronómicos</h4>
@@ -50,41 +52,42 @@ export const AstronomyPage = () => {
                 </div>
 
                 {datosAstronomicos && (
-                    <div className="columns is-centered">
+                    <div className="columns is-centered mb-5">
                         <div className="column is-half">
-                            <h3 className="title has-text-centered"> {datosAstronomicos?.location?.name} </h3>
                             <h5 className="title has-text-centered my-5"> {ciudadEdoPais} </h5>
+                            <p className="has-text-centered">Hora local: {datosAstronomicos?.location?.localtime}</p>
                         </div>
                     </div>
                     )
                 }
                 { cadenaAstronomia && (
-                    <div className="columns is-centered">
-                            <table className="table table-is-center">
+                    <div className="columns is-centered mt-4 mb-4">
+                            <table className="table table-is-center is-bordered">
                                 <thead></thead>
                                 <tbody>                                    
-                                    <tr><td>Sunrise: {astronomia?.sunrise}</td><td><img src={imagenAstro} width={100}></img></td></tr>
-                                    <tr><td>Sunset: {astronomia?.sunset}</td><td><img src="../../assets/astronomy/sunrise.png"></img> </td></tr>
+                                    <tr><td className="is-vcentered" width={250}>Sunrise: {astronomia?.sunrise}</td><td><img src={sunriseImg} width={100}></img></td></tr>
+                                    <tr><td className="is-vcentered">Sunset: {astronomia?.sunset}</td><td><img src={sunsetImg} width={100}></img> </td></tr>
+
+                                    <tr><td className="is-vcentered">Moonrise: {astronomia?.moonrise}</td><td><img src={moonriseImg} width={100}></img> </td></tr>
+                                    <tr><td className="is-vcentered">Moonset: {astronomia?.moonset}</td><td><img src={moonsetImg} width={100}></img> </td></tr>
                                 </tbody>
                             </table>
                     </div>
-                            )
+                    )
                 }
-                
-
             </div>
+
 
             <div className="box columns is-centered">
                 
                 {datosAstronomicos && (
+                    
                     <div className="column is-one-quarter box">
                         <pre className="my-5">
                             {JSON.stringify(datosAstronomicos, null, 2)}
                         </pre>
                     </div>
-
                 )}
-
             </div>
         
         </>

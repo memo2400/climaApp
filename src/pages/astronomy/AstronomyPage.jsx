@@ -19,10 +19,6 @@ export const AstronomyPage = () => {
     const cambioCiudad = (e) => {
         setCiudad(e.target.value);
     }
-    
-    const cambioCiudad = (e) => {
-        setCiudad(e.target.value);
-    }
 
     const {datosAstronomicos, ciudadEdoPais, cadenaAstronomia, astronomia, cosultarAstronomia} = astronomy();
 

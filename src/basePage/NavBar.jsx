@@ -47,7 +47,7 @@ export const NavBar = () => {
                             <a className="navbar-item" href="/Astronomia"> Astronomía </a>
                             
                             <hr className="navbar-divider"/>
-                            <a className="navbar-item" href="/#"> Demo </a>
+                            <a className="navbar-item" href="/historico"> Clima Historico </a>
                             <a className="navbar-item is-selected" href="/"> Demo </a>
                             <a className="navbar-item" href="/#"> Demo </a>
                             <a className="navbar-item" href="/#"> Demo </a>

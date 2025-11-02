@@ -6,6 +6,7 @@ export const HistoricPage = () => {
 
     const manejarSubmit = () => {
         alert(`se hizo submit ${ciudad}`)
+        alert(`se leyo el env ${import.meta.env.VITE_URL_BASE}`)
     }
 
     const [ciudad, setCiudad] = useState("cordoba veracruz");

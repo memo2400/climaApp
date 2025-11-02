@@ -1,12 +1,16 @@
 import { useState } from "react"
 import { Form } from "react-router"
+import { historicClimate } from "../../hooks/historic/historic.js"
 
 
 export const HistoricPage = () => {
 
+    const {historicClimateData} = historicClimate();
+
     const manejarSubmit = () => {
         alert(`se hizo submit ${ciudad}`)
         alert(`se leyo el env ${import.meta.env.VITE_URL_BASE}`)
+        alert(`La data demo es: ${historicClimateData}`)
     }
 
     const [ciudad, setCiudad] = useState("cordoba veracruz");

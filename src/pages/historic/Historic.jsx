@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Form } from "react-router"
 import { historicClimate } from "../../hooks/historic/historic.js"
 
-import { VictoryChart, VictoryLine } from "victory";
+import { VictoryChart, VictoryLine, VictoryTheme } from "victory";
 
 
 export const HistoricPage = () => {
@@ -26,6 +26,14 @@ export const HistoricPage = () => {
     const definirCiudad = (e) => {
         setCiudad(e.target.value)
     }
+
+    // temperatura dommy borrar
+    const temperaturaDummy = [
+        {
+            "temp_c": [8.5, 10, 13.5, 18, 20, 24.5, 22, 10, 9.8],
+            "time": "2025-10-24 00:00",
+        },
+    ]
 
 
     return(
@@ -60,10 +68,19 @@ export const HistoricPage = () => {
             )
             }
 
-            <div className="box columns is-centered mb-5">
-                <VictoryChart>
-                    <VictoryLine></VictoryLine>
-                </VictoryChart>
+            <div className="box columns is-one-quarter is-centered mb-5">
+                <div className="column is-one-quarter box">
+                    
+                    <VictoryChart theme={VictoryTheme.clean}>                        
+                        <VictoryLine data={temperaturaDummy[0]?.temp_c.map(
+                            (temp_c, position) => ({
+                            x: position,
+                            y: temp_c}), 
+                        )}>
+
+                        </VictoryLine>
+                    </VictoryChart>
+                </div>
             </div>
 
             <div className="box columns is-centered">

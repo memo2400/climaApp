@@ -5,7 +5,7 @@ import { historicClimate } from "../../hooks/historic/historic.js"
 
 export const HistoricPage = () => {
 
-    const {historicClimateData, 
+    const {historicClimateData, segundaHora,
         queryHistoric} = historicClimate();
 
     const manejarSubmit = async(e) => {
@@ -50,6 +50,15 @@ export const HistoricPage = () => {
                 </div>
 
             </div>
+
+            {segundaHora && (
+                <div className="box columns is-centered mb-5">
+                    <p>La segunda hora es: {segundaHora}</p>
+                </div>
+            )
+
+            }
+
             <div className="box columns is-centered">
                 {historicClimateData && (
                     <div className="column is-one-quarter box">

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export const historicClimate = () => {
 
@@ -20,8 +20,22 @@ export const historicClimate = () => {
 
     }
 
+    const [segundaHora, setSegundaHora] = useState("sin informacion");
+    const [historico, setHistorico] = useState(null);
+    useEffect (() =>{
+        if(historicClimateData?.forecast?.forecastday[0]?.hour){
+            setSegundaHora (historicClimateData?.forecast?.forecastday[0]?.hour[1]?.time);
+            console.log(`La segunda hora es: ${segundaHora}`);
+        }
+
+
+      },
+      [historicClimateData]
+    );
+
     return {
       historicClimateData,
+      segundaHora,
 
       queryHistoric,
     };

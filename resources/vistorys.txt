@@ -1,0 +1,6 @@
+
+https://nearform.com/open-source/victory/docs/introduction/
+
+npm install victory
+
+

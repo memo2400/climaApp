@@ -2,6 +2,8 @@ import { useState } from "react"
 import { Form } from "react-router"
 import { historicClimate } from "../../hooks/historic/historic.js"
 
+import { VictoryChart, VictoryLine } from "victory";
+
 
 export const HistoricPage = () => {
 
@@ -56,8 +58,13 @@ export const HistoricPage = () => {
                     <p>La segunda hora es: {segundaHora}</p>
                 </div>
             )
-
             }
+
+            <div className="box columns is-centered mb-5">
+                <VictoryChart>
+                    <VictoryLine></VictoryLine>
+                </VictoryChart>
+            </div>
 
             <div className="box columns is-centered">
                 {historicClimateData && (

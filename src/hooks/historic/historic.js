@@ -2,10 +2,28 @@ import { useState } from "react"
 
 export const historicClimate = () => {
 
-    const [historicClimateData, setHistoricClimateData] = useState ("dataDemo")
+    const [historicClimateData, setHistoricClimateData] = useState ("dataDemo");
 
-    return ({
-        historicClimateData,
-    })
+    const queryHistoric = async ({ciudad, fecha}) => {
+
+        const urlBase = import.meta.env.VITE_URL_BASE;
+        const urlHistoric = import.meta.env.VITE_URL_HISTORIC;
+        const llave = import.meta.env.VITE_LLAVE;
+
+        const urlCompleta = `${urlBase}${urlHistoric}?q=${ciudad}&key=${llave}&dt=${fecha}`;
+        alert(`LA url consultar es: ${urlCompleta}`);
+
+        const historicData = await fetch (urlCompleta);
+        const JsonData = await historicData.json();
+
+        setHistoricClimateData(JsonData);
+
+    }
+
+    return {
+      historicClimateData,
+
+      queryHistoric,
+    };
 
 }

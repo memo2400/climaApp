@@ -5,15 +5,21 @@ import { historicClimate } from "../../hooks/historic/historic.js"
 
 export const HistoricPage = () => {
 
-    const {historicClimateData} = historicClimate();
+    const {historicClimateData, 
+        queryHistoric} = historicClimate();
 
-    const manejarSubmit = () => {
+    const manejarSubmit = async(e) => {
+        e.preventDefault ();
+
         alert(`se hizo submit ${ciudad}`)
         alert(`se leyo el env ${import.meta.env.VITE_URL_BASE}`)
         alert(`La data demo es: ${historicClimateData}`)
+        queryHistoric({ciudad, fecha});
+        alert(`La data consultada es: ${historicClimateData}`)
     }
 
     const [ciudad, setCiudad] = useState("cordoba veracruz");
+    const [fecha, setFecha] = useState("2025-11-01");
 
     const definirCiudad = (e) => {
         setCiudad(e.target.value)
@@ -43,6 +49,15 @@ export const HistoricPage = () => {
                 </div>
                 </div>
 
+            </div>
+            <div className="box columns is-centered">
+                {historicClimateData && (
+                    <div className="column is-one-quarter box">
+                        <pre>
+                            {JSON.stringify(historicClimateData, null, 2)}
+                        </pre>
+                    </div>
+                )}
 
             </div>
         </>

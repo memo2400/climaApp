@@ -7,7 +7,7 @@ import { VictoryChart, VictoryLine, VictoryTheme } from "victory";
 
 export const HistoricPage = () => {
 
-    const {historicClimateData, segundaHora,
+    const {historicClimateData, segundaHora, temperaturaJSON,
         queryHistoric} = historicClimate();
 
     const manejarSubmit = async(e) => {
@@ -15,9 +15,7 @@ export const HistoricPage = () => {
 
         obtenerFechaHoy();
  
-        alert(`se hizo submit ${ciudad}`)
-        alert(`se leyo el env ${import.meta.env.VITE_URL_BASE}`)
-        alert(`La data demo es: ${historicClimateData}`)
+        alert(`se hizo submit ${ciudad}`)        
         queryHistoric({ciudad, fecha});
         alert(`La data consultada es: ${historicClimateData}`)
 
@@ -95,6 +93,18 @@ export const HistoricPage = () => {
                         )}>
 
                         </VictoryLine>
+                    </VictoryChart>
+                </div>
+            </div>
+
+            <div className="box columns is-one-quarter is-centered mb-5">
+                <div className="column is-one-quarter box">
+                    
+                    <VictoryChart theme={VictoryTheme.clean}>                        
+                        
+                        <VictoryLine data={temperaturaJSON}>
+                        </VictoryLine>
+                        
                     </VictoryChart>
                 </div>
             </div>

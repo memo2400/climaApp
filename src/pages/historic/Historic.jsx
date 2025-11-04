@@ -49,6 +49,13 @@ export const HistoricPage = () => {
         },
     ]
 
+    const data2=[
+      { x: 1, y: 2 },
+      { x: 2, y: 3 },
+      { x: 3, y: 5 },
+      { x: 4, y: 4 },
+      { x: 5, y: 7 },
+    ];
 
     return(
         <>
@@ -102,7 +109,7 @@ export const HistoricPage = () => {
                     
                     <VictoryChart theme={VictoryTheme.clean}>                        
                         
-                        <VictoryLine data={temperaturaJSON}>
+                        <VictoryLine data={data2}>
                         </VictoryLine>
                         
                     </VictoryChart>

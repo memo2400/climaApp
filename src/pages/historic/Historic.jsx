@@ -13,15 +13,31 @@ export const HistoricPage = () => {
     const manejarSubmit = async(e) => {
         e.preventDefault ();
 
+        obtenerFechaHoy();
+ 
         alert(`se hizo submit ${ciudad}`)
         alert(`se leyo el env ${import.meta.env.VITE_URL_BASE}`)
         alert(`La data demo es: ${historicClimateData}`)
         queryHistoric({ciudad, fecha});
         alert(`La data consultada es: ${historicClimateData}`)
+
     }
 
     const [ciudad, setCiudad] = useState("cordoba veracruz");
     const [fecha, setFecha] = useState("2025-11-01");
+    
+    const obtenerFechaHoy = () => {
+        
+        const tiempoTranscurrido = Date.now();
+        const hoy = new Date (tiempoTranscurrido);
+        const hoy_ISO = hoy.toISOString();
+
+        var arrayDeCadenas = hoy_ISO.split("T");
+        const hoy_fecha = arrayDeCadenas[0];
+        setFecha(hoy_fecha);   
+    }
+
+
 
     const definirCiudad = (e) => {
         setCiudad(e.target.value)

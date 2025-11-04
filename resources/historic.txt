@@ -1,4 +1,10 @@
 
+replace
+https://www.freecodecamp.org/espanol/news/javascript-date-now-como-obtener-la-fecha-actual-con-javascript/
+
+separador
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/split
+
 Response of API
 
 {

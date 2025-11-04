@@ -28,6 +28,13 @@ export const historicClimate = () => {
             console.log(`La segunda hora es: ${segundaHora}`);
         }
 
+        if(historicClimateData?.forecast?.forecastday[0]?.hour){
+          for (let llave in historicClimateData?.forecast?.forecastday[0]?.hour){
+            console.log(`cada elemento: ${llave.temp_c}°C ${llave.time}`);
+          }
+        }
+
+
 
       },
       [historicClimateData]

@@ -57,6 +57,10 @@ export const HistoricPage = () => {
       { x: 5, y: 7 },
     ];
 
+    const data3=[
+        {x: 1, y: 14.5},{x: 2, y: 14.4},{x: 3, y: 14.3},{x: 4, y: 14.4},{x: 5, y: 14.6},{x: 6, y: 14.7},{x: 7, y: 14.9},{x: 8, y: 15.6},{x: 9, y: 16.2},{x: 10, y: 16.8},{x: 11, y: 18.3},{x: 12, y: 19.6},{x: 13, y: 20.9},{x: 14, y: 21.4},{x: 15, y: 21.5},{x: 16, y: 21.6},{x: 17, y: 20.8},{x: 18, y: 20},{x: 19, y: 19.3},{x: 20, y: 18},{x: 21, y: 17},{x: 22, y: 16},{x: 23, y: 15.2},{x: 24, y: 14.8}
+    ];
+
     return(
         <>
             <div className="box">
@@ -109,7 +113,7 @@ export const HistoricPage = () => {
                     
                     <VictoryChart theme={VictoryTheme.clean}>                        
                         
-                        <VictoryLine data={data2}>
+                        <VictoryLine data={temperaturaJSON}>
                         </VictoryLine>
                         
                     </VictoryChart>

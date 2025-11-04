@@ -22,7 +22,7 @@ export const historicClimate = () => {
 
     const [segundaHora, setSegundaHora] = useState("sin informacion");
     const [historico, setHistorico] = useState(null);
-    const temperaturaJSON = [];
+    const [temperaturaJSON, setTemperaturaJSON] = useState([]);
     
     useEffect (() =>{
         if(historicClimateData?.forecast?.forecastday[0]?.hour){
@@ -39,10 +39,16 @@ export const historicClimate = () => {
 
           historicClimateData.forecast.forecastday.forEach(dia => {
 
+            let index = 1;
             dia.hour.forEach(hora => {
               console.log(`La hora es: ${hora.time} y tempe ${hora.temp_c}`);
-              nuevaTemperatura = `{"time": ${hora.time}, "temp_c": ${hora.temp_c}}`;
-              temperaturaJSON.push(nuevaTemperatura);
+              // nuevaTemperatura = `{"time": "${hora.time}", "temp_c": ${hora.temp_c}}`;
+              nuevaTemperatura = `{x: ${index}, y: ${hora.temp_c}}`;
+              // temperaturaJSON.push(nuevaTemperatura);
+
+              setTemperaturaJSON (prev => [...prev, nuevaTemperatura]);
+              index++;
+              
             });
             
           });

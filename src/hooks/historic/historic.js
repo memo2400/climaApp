@@ -35,21 +35,25 @@ export const historicClimate = () => {
             console.log(`cada elemento: ${llave.temp_c}°C ${llave.time}`);
           }
           
-          let nuevaTemperatura = "";
+          let nuevaTemperatura;
 
           historicClimateData.forecast.forecastday.forEach(dia => {
+            setTemperaturaJSON ([]);
 
             let index = 1;
-            dia.hour.forEach(hora => {
+            const nuevaTemperaturas = dia.hour.map(hora => {
               console.log(`La hora es: ${hora.time} y tempe ${hora.temp_c}`);
               // nuevaTemperatura = `{"time": "${hora.time}", "temp_c": ${hora.temp_c}}`;
-              nuevaTemperatura = `{x: ${index}, y: ${hora.temp_c}}`;
+              // nuevaTemperatura = `{x: ${index}, y: ${hora.temp_c}}`;
+              nuevaTemperatura = {x: index, y: hora.temp_c};
               // temperaturaJSON.push(nuevaTemperatura);
-
-              setTemperaturaJSON (prev => [...prev, nuevaTemperatura]);
+              
               index++;
+              return nuevaTemperatura;
               
             });
+
+            setTemperaturaJSON (prev => [...prev, ...nuevaTemperaturas]);
             
           });
 

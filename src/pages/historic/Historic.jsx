@@ -10,12 +10,12 @@ export const HistoricPage = () => {
     const {historicClimateData, segundaHora, temperaturaJSON,
         queryHistoric} = historicClimate();
 
-    const manejarSubmit = async(e) => {
+
+        const manejarSubmit = async(e) => {
         e.preventDefault ();
 
         obtenerFechaHoy();
- 
-        alert(`se hizo submit ${ciudad}`)        
+         
         queryHistoric({ciudad, fecha});
         alert(`La data consultada es: ${historicClimateData}`)
 
@@ -108,7 +108,7 @@ export const HistoricPage = () => {
                 </div>
             </div>
 
-            <div className="box columns is-one-quarter is-centered mb-5">
+            {temperaturaJSON && <div className="box columns is-one-quarter is-centered mb-5">
                 <div className="column is-one-quarter box">
                     
                     <VictoryChart theme={VictoryTheme.clean}>                        
@@ -119,14 +119,18 @@ export const HistoricPage = () => {
                     </VictoryChart>
                 </div>
             </div>
+            }
 
             <div className="box columns is-centered">
                 {historicClimateData && (
                     <div className="column is-one-quarter box">
                         <pre>
+                            {JSON.stringify(temperaturaJSON, null, 2)}
+                        </pre>
+                        <pre>
                             {JSON.stringify(historicClimateData, null, 2)}
                         </pre>
-                    </div>
+                    </div>                    
                 )}
 
             </div>

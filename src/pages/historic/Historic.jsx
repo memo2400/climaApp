@@ -1,8 +1,9 @@
 import { useState } from "react"
 import { Form } from "react-router"
 import { historicClimate } from "../../hooks/historic/historic.js"
+import _ from 'lodash'
 
-import { VictoryChart, VictoryLine, VictoryTheme } from "victory";
+import { VictoryAxis, VictoryChart, VictoryLabel, VictoryLegend, VictoryLine, VictoryTheme } from "victory";
 
 
 export const HistoricPage = () => {
@@ -41,13 +42,13 @@ export const HistoricPage = () => {
         setCiudad(e.target.value)
     }
 
-    // temperatura dommy borrar
-    const temperaturaDummy = [
-        {
-            "temp_c": [8.5, 10, 13.5, 18, 20, 24.5, 22, 10, 9.8],
-            "time": "2025-10-24 00:00",
-        },
-    ]
+    // DEMO temperatura dommy borrar
+    // const temperaturaDummy = [
+    //     {
+    //         "temp_c": [8.5, 10, 13.5, 18, 20, 24.5, 22, 10, 9.8],
+    //         "time": "2025-10-24 00:00",
+    //     },
+    // ]
 
     const data2=[
       { x: 1, y: 2 },
@@ -86,14 +87,23 @@ export const HistoricPage = () => {
 
             </div>
 
+            { historicClimateData?.location?.name && (                
+                <div className="box columns is-centered mb-5">
+                    <p>{`${historicClimateData?.location?.name}, ${historicClimateData?.location?.country}`}</p>
+                    {/* <p>{historicClimateData?.location?.country}</p>                     */}
+                </div>
+                )
+            }
+
             {segundaHora && (
                 <div className="box columns is-centered mb-5">
-                    <p>La segunda hora es: {segundaHora}</p>
+                    <p>La segunda hora es: {segundaHora}</p>                    
                 </div>
             )
             }
 
-            <div className="box columns is-one-quarter is-centered mb-5">
+            {/* DEMO */}
+            {/* <div className="box columns is-one-quarter is-centered mb-5">
                 <div className="column is-one-quarter box">
                     
                     <VictoryChart theme={VictoryTheme.clean}>                        
@@ -102,11 +112,10 @@ export const HistoricPage = () => {
                             x: position,
                             y: temp_c}), 
                         )}>
-
                         </VictoryLine>
                     </VictoryChart>
                 </div>
-            </div>
+            </div> */}
 
             {temperaturaJSON && <div className="box columns is-one-quarter is-centered mb-5">
                 <div className="column is-one-quarter box">
@@ -115,6 +124,60 @@ export const HistoricPage = () => {
                         
                         <VictoryLine data={temperaturaJSON}>
                         </VictoryLine>
+
+                        <VictoryAxis
+                            dependentAxis
+                            label="Temperatura"
+                            tickValues={_.range(0, 50, 10)}
+                            tickFormat={(value) => `${value} °C`}
+
+                            style={{
+                                axis: {
+                                  stroke: "transparent",
+                                },
+                                axisLabel: {
+                                  fontSize: 8,
+                                  padding: 50,
+                                },
+                                tickLabels: {
+                                  fontSize: 10,
+                                },
+                                grid: {
+                                  stroke: "#d9d9d9",
+                                  size: 5,
+                                },
+                            }}
+
+                        />
+
+                        <VictoryAxis
+                            tickValues={_.range(0, 23, 2)}
+                            label={`Horas del día: ${historicClimateData?.forecast?.forecastday[0]?.date}`}
+
+                            style={{
+                                axisLabel: {
+                                  fontSize: 10,                                  
+                                },
+                            }}
+                        />
+
+                        {/* <VictoryLegend
+                            itemsPerRow={1}
+                            x={50}
+                            y={220}
+                            data={"Temperatura ultimo dia"}
+                        /> */}
+
+                        <VictoryLabel
+                            text="Temperatura último dia"
+                            dx={28}
+                            dy={18}
+
+                            style={{
+                                ...VictoryTheme.clean.label,
+                                fontSize: 11,
+                            }}
+                        />
                         
                     </VictoryChart>
                 </div>

@@ -17,8 +17,7 @@ export const HistoricPage = () => {
 
         obtenerFechaHoy();
          
-        queryHistoric({ciudad, fecha});
-        alert(`La data consultada es: ${historicClimateData}`)
+        queryHistoric({ciudad, fecha});        
 
     }
 
@@ -72,7 +71,7 @@ export const HistoricPage = () => {
                 <form onSubmit={manejarSubmit}>
                     <p className="control has-icons-left has-icons-right my-4">
                         {/* Si no se pone en este orde el icono izquierdo no funciona de colores */}
-                        <input className="input" type="text" placeholder="Write your city" onChange={definirCiudad}></input>
+                        <input className="input" type="text" placeholder="Write your city and country" onChange={definirCiudad}></input>
                         <span className="icon is-small is-left"><i className="fas fa-city"></i></span>
                         <span className="icon is-right"><i className="fas fa-check"></i></span>
                     </p>
@@ -87,20 +86,23 @@ export const HistoricPage = () => {
 
             </div>
 
-            { historicClimateData?.location?.name && (                
-                <div className="box columns is-centered mb-5">
-                    <p>{`${historicClimateData?.location?.name}, ${historicClimateData?.location?.country}`}</p>
-                    {/* <p>{historicClimateData?.location?.country}</p>                     */}
-                </div>
+            { historicClimateData?.location?.name && (
+                <div>
+                    <div className="box has-text-centered mb-5">                    
+                        <h4 className="title is-3">{`${historicClimateData?.location?.name}, ${historicClimateData?.location?.region}, ${historicClimateData?.location?.country}`}</h4>
+                        {/* <br/> */}
+                        <h5 className="subtitle is-4">Fecha: {historicClimateData?.forecast?.forecastday[0]?.date}</h5>
+                    </div>
+                </div>                
                 )
             }
 
-            {segundaHora && (
+            {/* {segundaHora && (
                 <div className="box columns is-centered mb-5">
                     <p>La segunda hora es: {segundaHora}</p>                    
                 </div>
             )
-            }
+            } */}
 
             {/* DEMO */}
             {/* <div className="box columns is-one-quarter is-centered mb-5">
@@ -117,7 +119,7 @@ export const HistoricPage = () => {
                 </div>
             </div> */}
 
-            {temperaturaJSON && <div className="box columns is-one-quarter is-centered mb-5">
+            {temperaturaJSON[0]?.x && <div className="box columns is-one-quarter is-centered mb-5">
                 <div className="column is-one-quarter box">
                     
                     <VictoryChart theme={VictoryTheme.clean}>                        
@@ -188,10 +190,10 @@ export const HistoricPage = () => {
                 {historicClimateData && (
                     <div className="column is-one-quarter box">
                         <pre>
-                            {JSON.stringify(temperaturaJSON, null, 2)}
+                            {/* {JSON.stringify(temperaturaJSON, null, 2)} */}
                         </pre>
                         <pre>
-                            {JSON.stringify(historicClimateData, null, 2)}
+                            {/* {JSON.stringify(historicClimateData, null, 2)} */}
                         </pre>
                     </div>                    
                 )}

@@ -1,0 +1,22 @@
+
+Si ya descargaste y descomprimiste el .zip oficial de Node.js
+
+En esa carpeta, mantén presionada la tecla Shift → haz clic derecho → elige “Abrir ventana de PowerShell aquí” 
+o “Abrir en Terminal”. Con estp verifico que jale y ver la version descargada
+$ .\node.exe -v
+$ .\npm.cmd -v
+
+
+########################################
+
+Agregar node al path solo mi usuario sinser admin:
+$ setx PATH "$env:PATH;C:\node-v22.11.0-win-x64"
+$ setx PATH "$env:PATH;C:\node-v22.11.0-win-x64"
+
+Agregarlo temporalmente:
+$ env:PATH += ";C:\node-v22.11.0-win-x64"
+
+
+cerrar teminal abrir otra y ejecutar, para validar instalacion:
+$ node -v
+$ npm -v

@@ -8,16 +8,15 @@ import { VictoryAxis, VictoryChart, VictoryLabel, VictoryLegend, VictoryLine, Vi
 
 export const HistoricPage = () => {
 
-    const {historicClimateData, segundaHora, temperaturaJSON,
+    const {historicClimateData, segundaHora, temperaturaJSON, max_temp, min_temp,
         queryHistoric} = historicClimate();
 
+    const manejarSubmit = async(e) => {
+    e.preventDefault ();
 
-        const manejarSubmit = async(e) => {
-        e.preventDefault ();
-
-        obtenerFechaHoy();
+    obtenerFechaHoy();
          
-        queryHistoric({ciudad, fecha});        
+    queryHistoric({ciudad, fecha});        
 
     }
 
@@ -92,6 +91,7 @@ export const HistoricPage = () => {
                         <h4 className="title is-3">{`${historicClimateData?.location?.name}, ${historicClimateData?.location?.region}, ${historicClimateData?.location?.country}`}</h4>
                         {/* <br/> */}
                         <h5 className="subtitle is-4">Fecha: {historicClimateData?.forecast?.forecastday[0]?.date}</h5>
+                        <h4>{max_temp} | {min_temp}</h4>
                     </div>
                 </div>                
                 )
@@ -130,7 +130,7 @@ export const HistoricPage = () => {
                         <VictoryAxis
                             dependentAxis
                             label="Temperatura"
-                            tickValues={_.range(0, 50, 10)}
+                            tickValues={_.range(min_temp > 0 ? 0 : min_temp, max_temp, 5)}
                             tickFormat={(value) => `${value} °C`}
 
                             style={{

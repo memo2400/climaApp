@@ -25,6 +25,7 @@ export const historicClimate = () => {
     const [temperaturaJSON, setTemperaturaJSON] = useState([]);
     const [max_temp, setmax_temp] = useState (-Infinity);
     const [min_temp, setmin_temp] = useState (Infinity);
+    let rango_temperatura = null;
     
     useEffect (() =>{
         if(historicClimateData?.forecast?.forecastday[0]?.hour){
@@ -43,6 +44,8 @@ export const historicClimate = () => {
             setTemperaturaJSON ([]);
 
             let index = 1;
+            let max = -Infinity
+            let min = Infinity
 
             const nuevaTemperaturas = dia.hour.map(hora => {
               console.log(`La hora es: ${hora.time} y tempe ${hora.temp_c}`);
@@ -51,8 +54,8 @@ export const historicClimate = () => {
               nuevaTemperatura = {x: index, y: hora.temp_c};
               // temperaturaJSON.push(nuevaTemperatura);
 
-              if (hora.temp_c > max_temp){setmax_temp (hora.temp_c)}
-              if (hora.temp_c < min_temp){setmin_temp (hora.temp_c)}
+              if (hora.temp_c > max){max = hora.temp_c}
+              if (hora.temp_c < min){min = hora.temp_c}
               
               index++;
               return nuevaTemperatura;
@@ -60,26 +63,29 @@ export const historicClimate = () => {
             });
 
             setTemperaturaJSON (prev => [...prev, ...nuevaTemperaturas]);
-            console.log(`La temp Max: ${max_temp}`);
-            console.log(`La temp Min: ${min_temp}`);
+            setmax_temp(max);
+            setmin_temp(min);
             
           });
 
           console.log(`El array final es: ${temperaturaJSON}`);
-          
 
         }
-
-
+                  console.log(`La temp Max: ${max_temp}`);
+          console.log(`La temp Min: ${min_temp}`);
 
       },
       [historicClimateData]
     );
 
+            
+
     return {
       historicClimateData,
       segundaHora,
       temperaturaJSON,
+      max_temp,
+      min_temp,
 
       queryHistoric,
     };

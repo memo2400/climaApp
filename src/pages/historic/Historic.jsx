@@ -11,12 +11,20 @@ export const HistoricPage = () => {
     const {historicClimateData, segundaHora, temperaturaJSON, max_temp, min_temp,
         queryHistoric} = historicClimate();
 
-    const manejarSubmit = async(e) => {
-    e.preventDefault ();
+    const rangoTemperatura = () => {
+        const resta = (max_temp - min_temp) / 4;
+        const truncado = Math.trunc(resta);
+    
+        console.log (`resta es : ${truncado}`);
+        return truncado
+    }
 
-    obtenerFechaHoy();
+    const manejarSubmit = async(e) => {
+        e.preventDefault ();
+
+        obtenerFechaHoy();
          
-    queryHistoric({ciudad, fecha});        
+        queryHistoric({ciudad, fecha});        
 
     }
 
@@ -130,7 +138,8 @@ export const HistoricPage = () => {
                         <VictoryAxis
                             dependentAxis
                             label="Temperatura"
-                            tickValues={_.range(min_temp > 0 ? 0 : min_temp, max_temp, 5)}
+                            tickValues={_.range(min_temp > 0 ? 0 : min_temp, max_temp + 5, rangoTemperatura())}
+                            // tickValues={_.range(min_temp > 0 ? 0 : min_temp, max_temp + 5, 4.40 )}
                             tickFormat={(value) => `${value} °C`}
 
                             style={{

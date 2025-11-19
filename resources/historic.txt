@@ -1,4 +1,11 @@
 
+
+Puedo tener temperaturas:
+    min max =
+    + + = 0, max = suma = (max - 0)
+    - + = min, max = hay que cambiar la suma = (max + min)
+    - - = min, max = (min - max) 
+
 replace
 https://www.freecodecamp.org/espanol/news/javascript-date-now-como-obtener-la-fecha-actual-con-javascript/
 

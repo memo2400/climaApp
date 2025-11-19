@@ -19,6 +19,12 @@ export const HistoricPage = () => {
         return truncado
     }
 
+    const handleMinTemperatura = () => {
+        let min_temp_rounded = Math.trunc(min_temp);
+        min_temp_rounded = min_temp_rounded - 4;
+        return min_temp_rounded
+    }
+
     const manejarSubmit = async(e) => {
         e.preventDefault ();
 
@@ -99,7 +105,8 @@ export const HistoricPage = () => {
                         <h4 className="title is-3">{`${historicClimateData?.location?.name}, ${historicClimateData?.location?.region}, ${historicClimateData?.location?.country}`}</h4>
                         {/* <br/> */}
                         <h5 className="subtitle is-4">Fecha: {historicClimateData?.forecast?.forecastday[0]?.date}</h5>
-                        <h4>{max_temp} | {min_temp}</h4>
+                        <h6 className="subtitle is-6">max. | min.</h6>
+                        <h6 className="subtitle is-6">{max_temp} | {min_temp}</h6>
                     </div>
                 </div>                
                 )
@@ -138,8 +145,8 @@ export const HistoricPage = () => {
                         <VictoryAxis
                             dependentAxis
                             label="Temperatura"
-                            tickValues={_.range(min_temp > 0 ? 0 : min_temp, max_temp + 5, rangoTemperatura())}
-                            // tickValues={_.range(min_temp > 0 ? 0 : min_temp, max_temp + 5, 4.40 )}
+                            // tickValues={_.range(min_temp > 0 ? 0 : min_temp, max_temp + 5, rangoTemperatura())}
+                            tickValues={_.range(min_temp > 0 ? 0 : handleMinTemperatura(), max_temp + 4, 4 )}
                             tickFormat={(value) => `${value} °C`}
 
                             style={{

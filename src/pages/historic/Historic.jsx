@@ -99,16 +99,17 @@ export const HistoricPage = () => {
 
             </div>
 
+            <div className="box is-align-items-center mb-5">
             { historicClimateData?.location?.name && (
-                <div>
-                    <div className="box has-text-centered mb-5">                    
+                
+                    <div className="box column is-half has-text-centered mb-5">                    
                         <h4 className="title is-3">{`${historicClimateData?.location?.name}, ${historicClimateData?.location?.region}, ${historicClimateData?.location?.country}`}</h4>
                         {/* <br/> */}
                         <h5 className="subtitle is-4">Fecha: {historicClimateData?.forecast?.forecastday[0]?.date}</h5>
                         <h6 className="subtitle is-6">max. | min.</h6>
                         <h6 className="subtitle is-6">{max_temp} | {min_temp}</h6>
                     </div>
-                </div>                
+                                
                 )
             }
 
@@ -133,9 +134,9 @@ export const HistoricPage = () => {
                     </VictoryChart>
                 </div>
             </div> */}
-
-            {temperaturaJSON[0]?.x && <div className="box columns is-one-quarter is-centered mb-5">
-                <div className="column is-one-quarter box">
+            
+            {temperaturaJSON[0]?.x && 
+                <div className="column is-half box">
                     
                     <VictoryChart theme={VictoryTheme.clean}>                        
                         
@@ -199,8 +200,9 @@ export const HistoricPage = () => {
                         
                     </VictoryChart>
                 </div>
-            </div>
+            
             }
+            </div>
 
             <div className="box columns is-centered">
                 {historicClimateData && (

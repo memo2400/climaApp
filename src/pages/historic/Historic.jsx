@@ -28,16 +28,17 @@ export const HistoricPage = () => {
     const manejarSubmit = async(e) => {
         e.preventDefault ();
 
-        obtenerFechaHoy();
+        const fecha_actual = obtenerFechaHoy();
+        // console.log(`el dia es_: ${fecha_actual}`)
          
-        queryHistoric({ciudad, fecha});        
+        queryHistoric({ciudad, fecha_actual});        
 
     }
 
     const [ciudad, setCiudad] = useState("cordoba veracruz");
     const [fecha, setFecha] = useState("2025-11-01");
     
-    const obtenerFechaHoy = () => {
+    const obtenerFechaHoy =  () => {
         
         const tiempoTranscurrido = Date.now();
         const hoy = new Date (tiempoTranscurrido);
@@ -45,7 +46,12 @@ export const HistoricPage = () => {
 
         var arrayDeCadenas = hoy_ISO.split("T");
         const hoy_fecha = arrayDeCadenas[0];
-        setFecha(hoy_fecha);   
+        // console.log(`obtenerFechaHoy es_: ${hoy_fecha}`)
+        return hoy_fecha;
+        
+        // ERROR
+        // se actualiza hasta siguiente render
+        // setFecha(hoy_fecha);   
     }
 
 
@@ -195,7 +201,7 @@ export const HistoricPage = () => {
 
                             style={{
                                 ...VictoryTheme.clean.label,
-                                fontSize: 10,
+                                fontSize: 11,
                             }}
                         />
                         

@@ -120,12 +120,6 @@ export const HistoricPage = () => {
                 )
             }
 
-            {/* {segundaHora && (
-                <div className="box columns is-centered mb-5">
-                    <p>La segunda hora es: {segundaHora}</p>                    
-                </div>
-            )
-            } */}
 
             {/* DEMO */}
             {/* <div className="box columns is-one-quarter is-centered mb-5">

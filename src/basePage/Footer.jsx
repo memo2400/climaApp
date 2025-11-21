@@ -1,6 +1,6 @@
 export const Footer = () => {
     return (
-        <footer className="footer">
+        <footer className="footer is-align-content-flex-end">
           <div className="content has-text-centered">
             <p>
               <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>.

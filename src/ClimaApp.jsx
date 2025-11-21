@@ -40,7 +40,8 @@ export const ClimaApp = () => {
     
 
     return(
-        <div className="is-flex is-flex-direction-column min-vh-100">
+        // <div className="is-flex is-flex-direction-column min-vh-100">
+        <div className="">
         <div className="box">
             <h2 className="title is-2 has-text-centered"> Clima Actual </h2>
 

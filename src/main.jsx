@@ -14,6 +14,7 @@ import { HistoricPage } from './pages/historic/Historic'
 
 createRoot(document.getElementById('root')).render(
 // ReactDOM.createRoot(document.getElementById('root')).render(
+  <div className='is-flex is-flex-direction-column' style={{ minHeight: "100vh" }}>
   <StrictMode>
     <BrowserRouter>
     <NavBar/>
@@ -25,8 +26,9 @@ createRoot(document.getElementById('root')).render(
       {/* <div>Hola</div> */}
       {/* <appClima></appClima> */}
       
-      {/* <Footer/> */}
-    </Routes>
+      </Routes>
+      <Footer/>
     </BrowserRouter>
   </StrictMode>,
+  </div>
 )

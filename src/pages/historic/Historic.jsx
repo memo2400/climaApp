@@ -99,15 +99,16 @@ export const HistoricPage = () => {
 
             </div>
 
-            <div className="box is-align-items-center mb-5">
+
+            <div className="container mb-5">
             { historicClimateData?.location?.name && (
                 
-                    <div className="box column is-half has-text-centered mb-5">                    
-                        <h4 className="title is-3">{`${historicClimateData?.location?.name}, ${historicClimateData?.location?.region}, ${historicClimateData?.location?.country}`}</h4>
+                    <div className="box column is-half is-offset-one-quarter has-text-centered mb-5">                    
+                        <h3 className="title is-3 mb-2">{`${historicClimateData?.location?.name}, ${historicClimateData?.location?.region}, ${historicClimateData?.location?.country}`}</h3>
                         {/* <br/> */}
-                        <h5 className="subtitle is-4">Fecha: {historicClimateData?.forecast?.forecastday[0]?.date}</h5>
-                        <h6 className="subtitle is-6">max. | min.</h6>
-                        <h6 className="subtitle is-6">{max_temp} | {min_temp}</h6>
+                        <h4 className="subtitle is-4">Fecha: {historicClimateData?.forecast?.forecastday[0]?.date}</h4>
+                        <h5 className="subtitle is-5">max. | min.</h5>
+                        <h5 className="subtitle is-5">{max_temp} | {min_temp}</h5>
                     </div>
                                 
                 )
@@ -136,7 +137,7 @@ export const HistoricPage = () => {
             </div> */}
             
             {temperaturaJSON[0]?.x && 
-                <div className="column is-half box">
+                <div className="container box is-half">
                     
                     <VictoryChart theme={VictoryTheme.clean}>                        
                         
@@ -155,7 +156,7 @@ export const HistoricPage = () => {
                                   stroke: "transparent",
                                 },
                                 axisLabel: {
-                                  fontSize: 8,
+                                  fontSize: 9,
                                   padding: 50,
                                 },
                                 tickLabels: {
@@ -194,7 +195,7 @@ export const HistoricPage = () => {
 
                             style={{
                                 ...VictoryTheme.clean.label,
-                                fontSize: 11,
+                                fontSize: 10,
                             }}
                         />
                         

@@ -15,20 +15,25 @@ import { HistoricPage } from './pages/historic/Historic'
 createRoot(document.getElementById('root')).render(
 // ReactDOM.createRoot(document.getElementById('root')).render(
   <div className='is-flex is-flex-direction-column' style={{ minHeight: "100vh" }}>
-  <StrictMode>
-    <BrowserRouter>
-    <NavBar/>
-      <Routes>
-      <Route exact path= "/" element = {<ClimaApp/>} />
-      <Route exact path= "/pronostico" element = {<ForecastPage/>} />
-      <Route exact path= "/astronomia" element = {<AstronomyPage/>} />
-      <Route exact path='/historico' element = {<HistoricPage/>} />
-      {/* <div>Hola</div> */}
-      {/* <appClima></appClima> */}
-      
-      </Routes>
-      <Footer/>
-    </BrowserRouter>
-  </StrictMode>,
+      <div className='is-flex-grow-1'>
+          <StrictMode>
+            <BrowserRouter>
+            <NavBar/>
+              <Routes>
+              <Route exact path= "/" element = {<ClimaApp/>} />
+              <Route exact path= "/pronostico" element = {<ForecastPage/>} />
+              <Route exact path= "/astronomia" element = {<AstronomyPage/>} />
+              <Route exact path='/historico' element = {<HistoricPage/>} />
+              {/* <div>Hola</div> */}
+              {/* <appClima></appClima> */}
+
+              </Routes>
+
+            </BrowserRouter>
+          </StrictMode>,
+      </div>
+  
+  <Footer/>
+  
   </div>
 )

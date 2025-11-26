@@ -17,6 +17,17 @@ export const NavBar = () => {
         }
     };
 
+    const [banderaBurger, setbanderaBurger] = useState(false);
+    const onClickHamburger = () => {
+        if (banderaBurger){
+            setbanderaBurger (false)
+        }
+        else {
+          setbanderaBurger (true)
+        }
+
+    }
+
 
     return (
         <nav className="navbar is-light">
@@ -27,12 +38,26 @@ export const NavBar = () => {
                     <path fillRule="evenodd" clip-rule="evenodd" d="M0 110L10 40L50 0L100 50L70 80L110 120L50 160L0 110Z" fill="#00D1B2"/>
                     </svg>
                 </a>
+                {/* codigo viejo 2024 */}
+                {/* <div className="navbar-burger js-burger" data-target="navbarExampleTransparentExample">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div> */}
+                <a className={`navbar-burger ${banderaBurger ? 'is-active': ''} `} role="button" aria-label="menu" aria-expanded="false" onClick={onClickHamburger}>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
 
-                <div className="navbar-burger js-burger" data-target="navbarExampleTransparentExample">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
+                <div className={`navbar-menu ${banderaBurger ? 'is-active' : ''}`}>
+                    <div className="navbar-start">
+                        <a className="navbar-item" href="/">Pronóstico</a>
+                        <a className="navbar-item" href="/Astronomia">Astronomía</a>
+                        <a className="navbar-item" href="/historico">Clima histórico</a>
+                    </div>
                 </div>
             </div>
 

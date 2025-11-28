@@ -1,19 +1,10 @@
 import { Background } from "victory";
-import "./BasePageStyles.css";
+import "./BasePagestyles.css";
 
 export const Footer = () => {
     return (
         <footer className="footer is-align-content-flex-end">
           <div className="content is-flex is-justify-content-center">
-            {/* <p>
-              <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>.
-              The source code is licensed
-              <a href="https://opensource.org/license/mit">MIT</a>. The
-              website content is licensed
-              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0//"
-                >CC BY NC SA 4.0</a
-              >.
-            </p> */}
 
             <table className="table is-fullwidth is-transparent">
                 <tbody>
@@ -26,9 +17,9 @@ export const Footer = () => {
                     <tr>
                         <td>Otros proyectos</td>
                         <td><ul >
-                                <li>Halo</li>
-                                <li>Ususarios App</li>
-                                <li>Clima app</li>
+                                <li> <a href="https://sweet-youtiao-f80deb.netlify.app/">Halo</a></li>
+                                <li> <a href="https://app-usuarios-10.netlify.app/">Ususarios App </a></li>
+                                <li> <a href="https://climaapp-mouc.onrender.com/">Clima app </a></li>
                             </ul>
                         </td>
                         <td className="is-one-fifth"></td>
@@ -40,6 +31,16 @@ export const Footer = () => {
             </table>
 
           </div>
+          
+          <div className="is-flex is-justify-content-center my-5">
+            <p>
+                <strong>Clima app </strong>
+                All rights reserve &copy;
+                <a href="https://opensource.org/license/mit">MIT</a>. The
+                website content is licensed
+            </p>
+          </div>
+
         </footer>
     );
 }
